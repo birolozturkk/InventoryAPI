@@ -1,5 +1,6 @@
 ## Maven
 
+https://jitpack.io/#ScropyTR/LegendInventoryAPI
 
 ```pom.xml
 
