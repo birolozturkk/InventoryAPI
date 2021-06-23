@@ -1,7 +1,7 @@
 ## Maven
 
 
-[![Release](https://jitpack.io/v/ScropyTR/LegendInventoryAPI.svg)](https://jitpack.io/#ScropyTR/LegendInventoryAPI)
+[![Release](https://jitpack.io/v/ScropyTR/LegendInventoryAPI.svg)] (https://jitpack.io/#ScropyTR/LegendInventoryAPI)
 
 
 ```pom.xml
