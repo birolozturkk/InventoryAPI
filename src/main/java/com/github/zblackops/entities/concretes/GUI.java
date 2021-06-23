@@ -41,7 +41,6 @@ public class GUI implements InventoryHolder {
     }
 
     public void open(Player player) {
-        this.inventoryAPI.getCurrentGUI().put(player.getUniqueId(), this);
         player.openInventory(this.inventory);
     }
 

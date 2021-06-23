@@ -19,12 +19,6 @@ import java.util.List;
 
 public class GUIListener implements Listener {
 
-    private final InventoryAPI inventoryAPI;
-
-    public GUIListener(InventoryAPI inventoryAPI) {
-        this.inventoryAPI = inventoryAPI;
-    }
-
     @EventHandler
     public void onClick(InventoryClickEvent event) {
         if (event.getInventory().getHolder() != null && event.getInventory().getHolder() instanceof GUI) {
@@ -36,9 +30,6 @@ public class GUIListener implements Listener {
                 ItemX itemX = gui.getItemBySlot(event.getSlot());
                 if(itemX==null || itemX.getClick()==null) return;
                 itemX.getClick().onClick(event);
-
-                //OLD CODE
-                //GUI gui = inventoryAPI.getCurrentGUI().get(player.getUniqueId());
             }
         }
     }
@@ -51,11 +42,6 @@ public class GUIListener implements Listener {
                 GUI gui = (GUI) event.getInventory().getHolder();
                 gui.onClose(event);
 
-
-                //OLD CODE
-                //inventoryAPI.getCurrentGUI().remove(player.getUniqueId());
-                //GUI gui = inventoryAPI.getCurrentGUI().get(player.getUniqueId());
-
                 }
             }
         }
@@ -67,11 +53,6 @@ public class GUIListener implements Listener {
                 Player player = (Player) event.getPlayer();
                 GUI gui = (GUI) event.getInventory().getHolder();
                 gui.onOpen(event);
-                
-                //OLD CODE
-                //GUI gui = inventoryAPI.getCurrentGUI().get(player.getUniqueId());
-                //inventoryAPI.getCurrentGUI().put(player.getUniqueId(), gui);
-
 
                 }
             }
