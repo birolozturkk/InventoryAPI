@@ -1,6 +1,6 @@
 ## Maven
 
-https://jitpack.io/#ScropyTR/LegendInventoryAPI
+[![](https://jitpack.io/v/ScropyTR/LegendInventoryAPI.svg)](https://jitpack.io/#ScropyTR/LegendInventoryAPI)
 
 ```pom.xml
 
