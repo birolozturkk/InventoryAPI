@@ -54,6 +54,22 @@ public class ExampleGUI extends GUI {
     }
 }
 ```
+### Simple GUI
+
+``` java
+    ExampleGUI exampleGUI = new ExampleGUI(inventoryAPI, "exampleGUI", 54);
+
+    ItemX itemX = new ItemX(new ItemStack(Material.GOLD), event -> {
+        event.setCancelled(true);
+    });
+
+    exampleGUI.setItem(2, itemX);
+    exampleGUI.addItem(itemX);
+
+    exampleGUI.open(player);
+
+```
+### Paginated GUI
 
 ``` java
     ExampleGUI exampleGUI = new ExampleGUI(inventoryAPI, "exampleGUI", 54);
@@ -90,3 +106,4 @@ public class ExampleGUI extends GUI {
     exampleGUI.open(player);
 
 ```
+
