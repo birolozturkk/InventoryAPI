@@ -1,2 +1,4 @@
 # LegendInventoryAPI
-```InventoryAPI.setup(this);```
+```
+InventoryAPI.setup(this);
+```
