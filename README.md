@@ -2,14 +2,18 @@
 
 
 ```pom.xml
-	<repositories>
-		<repository>
-		    <id>jitpack.io</id>
-		    <url>https://jitpack.io</url>
-		</repository>
-	</repositories>
-```
 
+<dependency>
+    <groupId>com.github.ScropyTR</groupId>
+    <artifactId>LegendInventoryAPI</artifactId>
+    <version>Tag</version>
+</dependency>
+
+<repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+</repository>
+```
 
 
 ```java
