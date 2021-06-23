@@ -1,6 +1,6 @@
 ## Maven
 
-https://jitpack.io/v/ScropyTR/LegendInventoryAPI/Tag.svg?style=flat-square
+https://jitpack.io/v/ScropyTR/LegendInventoryAPI.svg?style=flat-square
 
 ```pom.xml
 
