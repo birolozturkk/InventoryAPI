@@ -17,10 +17,13 @@ https://jitpack.io/v/ScropyTR/LegendInventoryAPI.svg?style=flat-square
 ```
 
 
+## Setup
+
 ```java
 InventoryAPI.setup(this);
 ```
 Add to onEnable method of your plugin
+
 
 ## Usage
 
@@ -54,6 +57,8 @@ public class ExampleGUI extends GUI {
     }
 }
 ```
+
+
 ### Simple GUI
 
 ``` java
@@ -69,6 +74,8 @@ public class ExampleGUI extends GUI {
     exampleGUI.open(player);
 
 ```
+
+
 ### Paginated GUI
 
 ``` java
