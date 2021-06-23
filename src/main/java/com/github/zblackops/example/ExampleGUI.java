@@ -19,15 +19,7 @@ public class ExampleGUI extends GUI {
     public void onOpen(InventoryOpenEvent event) {
         super.onOpen(event);
 
-        ItemX itemX = new ItemX(new ItemStack(Material.GOLD_BLOCK), clickEvent -> {
-            clickEvent.getWhoClicked().sendMessage(clickEvent.getSlot() + "clicked to Slot");
-        });
-
-        //Adds to specific slot
-        setItem(5, itemX);
-
-        //Adds into first empty slot
-        addItem(itemX);
+        event.getPlayer().sendMessage("Inventory opened");
 
     }
 
@@ -35,7 +27,7 @@ public class ExampleGUI extends GUI {
     public void onClose(InventoryCloseEvent event) {
         super.onClose(event);
 
-        event.getPlayer().sendMessage("ınventory closed");
+        event.getPlayer().sendMessage("Inventory closed");
     }
 
     @Override
