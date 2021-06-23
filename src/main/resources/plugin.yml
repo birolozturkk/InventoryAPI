@@ -1,0 +1,5 @@
+name: LegendInventoryAPI
+version: ${project.version}
+main: com.github.zblackops.InventoryAPI
+commands:
+  test:
