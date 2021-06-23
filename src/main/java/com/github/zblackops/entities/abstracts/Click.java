@@ -5,6 +5,6 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 
 public interface Click {
 
-    void onClick(InventoryClickEvent event);
+    void onClick(InventoryClickEvent clickEvent);
 
 }
