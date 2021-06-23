@@ -1,2 +1,2 @@
 # LegendInventoryAPI
-Paginated gui creation api
+InventoryAPI.setup(this);
