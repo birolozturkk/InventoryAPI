@@ -1,4 +1,4 @@
-# MAVEN
+##Maven
 
 
 ```pom.xml
@@ -21,4 +21,4 @@ InventoryAPI.setup(this);
 ```
 Add to onEnable method of your plugin
 
-# USAGE
+##Usage
