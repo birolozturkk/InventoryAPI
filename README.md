@@ -21,4 +21,4 @@ InventoryAPI.setup(this);
 ```
 Add to onEnable method of your plugin
 
-##Usage
+## Usage
