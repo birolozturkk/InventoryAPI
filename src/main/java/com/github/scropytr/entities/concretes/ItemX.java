@@ -1,6 +1,6 @@
-package com.github.zblackops.entities.concretes;
+package com.github.scropytr.entities.concretes;
 
-import com.github.zblackops.entities.abstracts.Click;
+import com.github.scropytr.entities.abstracts.Click;
 import lombok.Data;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;

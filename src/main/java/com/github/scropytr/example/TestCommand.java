@@ -1,7 +1,7 @@
-package com.github.zblackops.example;
+package com.github.scropytr.example;
 
-import com.github.zblackops.entities.concretes.ItemX;
-import com.github.zblackops.entities.concretes.Pagination;
+import com.github.scropytr.entities.concretes.ItemX;
+import com.github.scropytr.entities.concretes.Pagination;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -15,9 +15,9 @@ import java.util.List;
 
 public class TestCommand implements CommandExecutor {
 
-    com.github.zblackops.InventoryAPI inventoryAPI;
+    com.github.scropytr.InventoryAPI inventoryAPI;
 
-    public TestCommand(com.github.zblackops.InventoryAPI inventoryAPI) {
+    public TestCommand(com.github.scropytr.InventoryAPI inventoryAPI) {
         this.inventoryAPI = inventoryAPI;
     }
 
@@ -56,7 +56,7 @@ public class TestCommand implements CommandExecutor {
 
             List<ItemX> items = new ArrayList<>();
 
-            for(int i = 0; i < 903; i++){
+            for(int i = 0; i < 304; i++){
                 int finalI = i;
                 ItemX itemX = new ItemX(new ItemStack(Material.GOLD_BLOCK), event -> {
                     event.getWhoClicked().sendMessage(String.valueOf(finalI));

@@ -1,8 +1,6 @@
-package com.github.zblackops.entities.concretes;
+package com.github.scropytr.entities.concretes;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import org.bukkit.Material;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.inventory.ItemStack;

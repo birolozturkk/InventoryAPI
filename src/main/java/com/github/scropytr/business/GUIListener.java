@@ -1,21 +1,13 @@
-package com.github.zblackops.business;
+package com.github.scropytr.business;
 
-import com.github.zblackops.InventoryAPI;
-import com.github.zblackops.entities.concretes.GUI;
-import com.github.zblackops.entities.concretes.ItemX;
-import org.bukkit.Material;
+import com.github.scropytr.entities.concretes.GUI;
+import com.github.scropytr.entities.concretes.ItemX;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
-import org.bukkit.inventory.ItemStack;
-import sun.security.mscapi.CPublicKey;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class GUIListener implements Listener {
 

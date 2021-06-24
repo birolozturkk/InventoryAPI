@@ -1,3 +1,3 @@
 Manifest-Version: 1.0
-Main-Class: com.github.zblackops.InventoryAPI
+Main-Class: com.github.scropytr.InventoryAPI
 

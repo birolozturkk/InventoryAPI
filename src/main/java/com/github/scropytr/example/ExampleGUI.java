@@ -1,13 +1,10 @@
-package com.github.zblackops.example;
+package com.github.scropytr.example;
 
-import com.github.zblackops.InventoryAPI;
-import com.github.zblackops.entities.concretes.GUI;
-import com.github.zblackops.entities.concretes.ItemX;
-import org.bukkit.Material;
+import com.github.scropytr.InventoryAPI;
+import com.github.scropytr.entities.concretes.GUI;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
-import org.bukkit.inventory.ItemStack;
 
 public class ExampleGUI extends GUI {
 

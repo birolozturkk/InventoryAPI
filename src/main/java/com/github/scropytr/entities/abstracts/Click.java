@@ -1,6 +1,5 @@
-package com.github.zblackops.entities.abstracts;
+package com.github.scropytr.entities.abstracts;
 
-import com.github.zblackops.entities.concretes.GUI;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
 public interface Click {

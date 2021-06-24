@@ -1,9 +1,8 @@
-package com.github.zblackops.entities.concretes;
+package com.github.scropytr.entities.concretes;
 
-import com.github.zblackops.InventoryAPI;
+import com.github.scropytr.InventoryAPI;
 import lombok.Getter;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
@@ -20,21 +19,18 @@ public class GUI implements InventoryHolder {
     private int size;
 
     private Inventory inventory;
-    private final InventoryAPI inventoryAPI;
     @Getter private Pagination pagination;
 
     private HashMap<Integer, ItemX> items = new HashMap<>();
 
-    public GUI(InventoryAPI inventoryAPI, String title, int size) {
-        this.inventoryAPI = inventoryAPI;
+    public GUI(String title, int size) {
         this.title = title;
         this.size = size;
-        this.inventory = Bukkit.createInventory(this, size, title);
         this.items = new HashMap<Integer, ItemX>();
+        createInventory(size, title);
     }
 
     public GUI(InventoryAPI inventoryAPI, Inventory inventory) {
-        this.inventoryAPI = inventoryAPI;
         this.inventory = inventory;
         this.title = inventory.getTitle();
         this.size = inventory.getSize();
@@ -83,15 +79,17 @@ public class GUI implements InventoryHolder {
         return this.items.get(slot);
     }
 
-    public ItemX getItemBySlotAndPage(int slot, int page){
-        if (slot < 0 || slot > this.inventory.getSize())
-            return null;
-
-        return getItemBySlot((page * this.pagination.getSlots().size()) + slot);
-        }
-
-    public boolean containsItemBySlot(int slot){
-        return this.items.containsKey(slot);
+    public void setTitle(String title){
+        createInventory(this.size, title);
     }
+
+    public void setSize(int size){
+        createInventory(size, this.title);
+    }
+
+    public void createInventory(int size, String title){
+        this.inventory = Bukkit.createInventory(this, size, title);
+    }
+
 
 }
