@@ -1,6 +1,5 @@
 package com.github.scropytr.entities.concretes;
 
-import com.github.scropytr.InventoryAPI;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -30,7 +29,7 @@ public class GUI implements InventoryHolder {
         createInventory(size, title);
     }
 
-    public GUI(InventoryAPI inventoryAPI, Inventory inventory) {
+    public GUI(Inventory inventory) {
         this.inventory = inventory;
         this.title = inventory.getTitle();
         this.size = inventory.getSize();
