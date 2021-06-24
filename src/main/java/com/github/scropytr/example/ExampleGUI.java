@@ -8,8 +8,8 @@ import org.bukkit.event.inventory.InventoryOpenEvent;
 
 public class ExampleGUI extends GUI {
 
-    public ExampleGUI(InventoryAPI inventoryAPI, String title, int size) {
-        super(inventoryAPI, title, size);
+    public ExampleGUI(String title, int size) {
+        super(title, size);
     }
 
     @Override

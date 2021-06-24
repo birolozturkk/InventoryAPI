@@ -51,7 +51,7 @@ public class TestCommand implements CommandExecutor {
 //                pagination.nextPage();
 //            }));
 
-            ExampleGUI exampleGUI = new ExampleGUI(inventoryAPI, "exampleGUI", 54);
+            ExampleGUI exampleGUI = new ExampleGUI("exampleGUI", 54);
             Pagination pagination = exampleGUI.getPagination();
 
             List<ItemX> items = new ArrayList<>();
