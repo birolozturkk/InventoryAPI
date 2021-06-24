@@ -7,7 +7,7 @@ https://jitpack.io/v/ScropyTR/LegendInventoryAPI.svg?style=flat-square
 <dependency>
     <groupId>com.github.ScropyTR</groupId>
     <artifactId>LegendInventoryAPI</artifactId>
-    <version>Tag</version>
+    <version>1.0.0</version>
 </dependency>
 
 <repository>
