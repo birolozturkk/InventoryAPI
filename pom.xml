@@ -89,9 +89,9 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.hakan-krgn</groupId>
-            <artifactId>HInventory</artifactId>
-            <version>1.0.8</version>
+            <groupId>com.github.ScropyTR</groupId>
+            <artifactId>LegendInventoryAPI</artifactId>
+            <version>1.0</version>
         </dependency>
     </dependencies>
 </project>
