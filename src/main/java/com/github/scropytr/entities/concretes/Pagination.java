@@ -13,11 +13,11 @@ public class Pagination {
 
     private GUI gui;
 
-    private List<ItemX> items;
+    private List<Item> items;
 
     private List<Integer> slots;
 
-    private HashMap<Integer, List<ItemX>> getItemsByPage = new HashMap<>();
+    private HashMap<Integer, List<Item>> getItemsByPage = new HashMap<>();
 
     private int currentPage;
 
@@ -26,7 +26,7 @@ public class Pagination {
         this.currentPage = 0;
     }
 
-    public void setItems(List<ItemX> items){
+    public void setItems(List<Item> items){
         this.items = items;
         refreshGUI(currentPage);
     }
@@ -38,10 +38,10 @@ public class Pagination {
 
         int m = 0;
         for (int first = newPage * slotsSize; first < (newPage + 1) * slotsSize; first++) {
-            ItemX itemX;
-            if (first >= itemsSize) itemX = new ItemX(new ItemStack(Material.AIR));
-            else itemX = this.items.get(first);
-            this.gui.setItem(this.slots.get(m), itemX);
+            Item item;
+            if (first >= itemsSize) item = new Item(new ItemStack(Material.AIR));
+            else item = this.items.get(first);
+            this.gui.setItem(this.slots.get(m), item);
             m++;
         }
         return true;

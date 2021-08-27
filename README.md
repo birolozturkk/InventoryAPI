@@ -64,12 +64,12 @@ public class ExampleGUI extends GUI {
 ``` java
     ExampleGUI exampleGUI = new ExampleGUI(inventoryAPI, "exampleGUI", 54);
 
-    ItemX itemX = new ItemX(new ItemStack(Material.GOLD), event -> {
+    ItemX item = new ItemX(new ItemStack(Material.GOLD), event -> {
         event.setCancelled(true);
     });
 
-    exampleGUI.setItem(2, itemX);
-    exampleGUI.addItem(itemX);
+    exampleGUI.setItem(2, item);
+    exampleGUI.addItem(item);
 
     exampleGUI.open(player);
 
@@ -86,10 +86,10 @@ public class ExampleGUI extends GUI {
 
     for(int i = 0; i < 304; i++){
         int finalI = i;
-        ItemX itemX = new ItemX(new ItemStack(Material.GOLD_BLOCK), event -> {
+        ItemX item = new ItemX(new ItemStack(Material.GOLD_BLOCK), event -> {
             event.getWhoClicked().sendMessage(String.valueOf(finalI));
         });
-        items.add(itemX);
+        items.add(item);
     }
 
     pagination.setSlots(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35));

@@ -1,7 +1,7 @@
 package com.github.scropytr.business;
 
 import com.github.scropytr.entities.concretes.GUI;
-import com.github.scropytr.entities.concretes.ItemX;
+import com.github.scropytr.entities.concretes.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -19,9 +19,9 @@ public class GUIListener implements Listener {
                 GUI gui = (GUI) event.getInventory().getHolder();
                 gui.onClick(event);
 
-                ItemX itemX = gui.getItemBySlot(event.getSlot());
-                if(itemX==null || itemX.getClick()==null) return;
-                itemX.getClick().onClick(event);
+                Item item = gui.getItemBySlot(event.getSlot());
+                if(item ==null || item.getClick()==null) return;
+                item.getClick().onClick(event);
             }
         }
     }

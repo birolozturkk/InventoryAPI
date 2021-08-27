@@ -20,12 +20,11 @@ public class GUI implements InventoryHolder {
     private Inventory inventory;
     @Getter private Pagination pagination;
 
-    private HashMap<Integer, ItemX> items = new HashMap<>();
+    private HashMap<Integer, Item> items = new HashMap<>();
 
     public GUI(String title, int size) {
         this.title = title;
         this.size = size;
-        this.items = new HashMap<Integer, ItemX>();
         createInventory(size, title);
     }
 
@@ -39,20 +38,20 @@ public class GUI implements InventoryHolder {
         player.openInventory(this.inventory);
     }
 
-    public void setItem(int slot, ItemX itemX) {
+    public void setItem(int slot, Item item) {
         if (this.inventory.getSize() <= slot){
         throw new IndexOutOfBoundsException("Slot cannot be bigger than inventory size!");
     }
-        this.items.put(slot, itemX);
-        this.inventory.setItem(slot, itemX.getItem());
+        this.items.put(slot, item);
+        this.inventory.setItem(slot, item.getItemStack());
     }
 
-    public void addItem(ItemX itemX) {
-        setItem(this.inventory.firstEmpty(), itemX);
+    public void addItem(Item item) {
+        setItem(this.inventory.firstEmpty(), item);
     }
 
-    public void addItemMultiple(List<ItemX> itemXList) {
-        itemXList.stream().findFirst().ifPresent(itemX -> addItem(itemX));
+    public void addItemMultiple(List<Item> itemList) {
+        itemList.stream().findFirst().ifPresent(itemX -> addItem(itemX));
     }
 
     public void onOpen(InventoryOpenEvent event) {
@@ -74,7 +73,7 @@ public class GUI implements InventoryHolder {
         return pagination;
     }
 
-    public ItemX getItemBySlot(int slot){
+    public Item getItemBySlot(int slot){
         return this.items.get(slot);
     }
 
