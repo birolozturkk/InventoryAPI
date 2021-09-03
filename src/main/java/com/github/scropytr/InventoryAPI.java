@@ -1,6 +1,6 @@
 package com.github.scropytr;
 
-import com.github.scropytr.business.GUIListener;
+import com.github.scropytr.listeners.GUIListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;

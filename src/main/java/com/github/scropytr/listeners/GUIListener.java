@@ -1,4 +1,4 @@
-package com.github.scropytr.business;
+package com.github.scropytr.listeners;
 
 import com.github.scropytr.entities.concretes.GUI;
 import com.github.scropytr.entities.concretes.Item;
