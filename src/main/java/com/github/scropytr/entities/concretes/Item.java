@@ -17,9 +17,9 @@ public class Item {
     private int amount;
     private List<String> lore;
 
-    private ItemStack itemStack;
-    private ItemMeta meta;
-    private Click click;
+    private transient ItemStack itemStack;
+    private transient ItemMeta meta;
+    private transient Click click;
 
     public Item(ItemStack itemStack, Click click) {
         this(itemStack);

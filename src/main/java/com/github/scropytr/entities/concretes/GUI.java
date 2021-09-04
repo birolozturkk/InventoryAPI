@@ -16,11 +16,12 @@ public class GUI implements InventoryHolder {
 
     private String title;
     private int size;
-
-    private Inventory inventory;
-    @Getter private Pagination pagination;
-
     private HashMap<Integer, Item> items = new HashMap<>();
+
+    private transient Inventory inventory;
+
+    @Getter
+    private transient Pagination pagination;
 
     public GUI(String title, int size) {
         this.title = title;
