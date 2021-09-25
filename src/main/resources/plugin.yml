@@ -1,5 +1,3 @@
 name: LegendInventoryAPI
 version: ${project.version}
-main: com.github.zblackops.InventoryAPI
-commands:
-  test:
+main: com.github.scropytr.InventoryAPI

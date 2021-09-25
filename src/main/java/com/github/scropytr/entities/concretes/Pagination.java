@@ -14,9 +14,7 @@ public class Pagination {
     private GUI gui;
 
     private List<Item> items;
-
     private List<Integer> slots;
-
     private HashMap<Integer, List<Item>> getItemsByPage = new HashMap<>();
 
     private int currentPage;
