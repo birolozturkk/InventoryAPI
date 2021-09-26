@@ -1,3 +1,0 @@
-name: LegendInventoryAPI
-version: ${project.version}
-main: com.github.scropytr.InventoryAPI
