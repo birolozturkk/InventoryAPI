@@ -39,7 +39,8 @@ public class Pagination {
             Item item;
             if (first >= itemsSize) item = new Item(new ItemStack(Material.AIR));
             else item = this.items.get(first);
-            this.gui.setItem(this.slots.get(m), item);
+            item.setSlot(this.slots.get(m));
+            this.gui.setItem(item);
             m++;
         }
         return true;

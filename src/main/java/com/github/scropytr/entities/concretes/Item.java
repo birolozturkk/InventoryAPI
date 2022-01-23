@@ -80,4 +80,7 @@ public class Item {
         return this;
     }
 
+    public void setSlot(int slot) {
+        this.slot = slot;
+    }
 }
