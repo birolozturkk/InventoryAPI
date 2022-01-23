@@ -13,6 +13,7 @@ import org.bukkit.inventory.InventoryHolder;
 import java.util.HashMap;
 import java.util.List;
 
+@Getter
 public class GUI implements InventoryHolder {
 
     private final String title;
