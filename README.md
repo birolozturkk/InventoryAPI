@@ -7,7 +7,7 @@
 <dependency>
     <groupId>com.github.ScropyTR</groupId>
     <artifactId>LegendInventoryAPI</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
 </dependency>
 
 <repository>
