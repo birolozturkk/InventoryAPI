@@ -14,7 +14,6 @@ import java.util.HashMap;
 import java.util.List;
 
 @Getter
-@Setter
 public class GUI implements InventoryHolder {
 
     private final String title;
