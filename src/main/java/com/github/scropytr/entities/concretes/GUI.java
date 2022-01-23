@@ -10,15 +10,15 @@ import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 public class GUI implements InventoryHolder {
 
-    private final String title;
-    private final int size;
-    private final HashMap<Integer, Item> items = new HashMap<>();
+    private String title;
+    private int size;
+    private List<Item> items = new ArrayList<>();
 
     private transient Inventory inventory;
 
@@ -41,20 +41,21 @@ public class GUI implements InventoryHolder {
         player.openInventory(this.inventory);
     }
 
-    public void setItem(int slot, Item item) {
+    public void setItem(Item item) {
+        int slot = item.getSlot();
         if (this.inventory.getSize() <= slot) {
             throw new IndexOutOfBoundsException("Slot cannot be bigger than inventory size!");
         }
-        this.items.put(slot, item);
+        this.items.add(item);
         this.inventory.setItem(slot, item.getItemStack());
     }
 
     public void addItem(Item item) {
-        setItem(this.inventory.firstEmpty(), item);
+        this.inventory.setItem(inventory.firstEmpty(), item.getItemStack());
     }
 
     public void addItemMultiple(List<Item> itemList) {
-        itemList.stream().findFirst().ifPresent(itemX -> addItem(itemX));
+        this.items = itemList;
     }
 
     public void onOpen(InventoryOpenEvent event) {

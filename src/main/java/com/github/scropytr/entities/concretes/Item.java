@@ -11,10 +11,11 @@ import java.util.List;
 @Getter
 public class Item {
 
-    private String displayName;
     private Material material;
-    private int data;
+    private int slot;
+    private String displayName;
     private int amount;
+    private int data;
     private List<String> lore;
 
     private transient ItemStack itemStack;
@@ -30,20 +31,23 @@ public class Item {
         this.itemStack = itemStack;
         this.meta = itemStack.getItemMeta();
         this.click = event -> {};
+        if(itemStack.getItemMeta() != meta) itemStack.setItemMeta(meta);
     }
 
-    public Item(String displayName, Material material, int data, int amount, List<String> lore) {
+    public Item(String displayName, int slot, Material material, int data, int amount, List<String> lore) {
         this(new ItemStack(material, amount, (short) data));
         setDisplayName(displayName);
         setAmount(amount);
         setLore(lore);
+        this.slot = slot;
     }
 
-    public Item(String displayName, Material material, int data, int amount, List<String> lore, Click click) {
+    public Item(String displayName, int slot, Material material, int data, int amount, List<String> lore, Click click) {
         this(new ItemStack(material, amount, (short) data), click);
         setDisplayName(displayName);
         setAmount(amount);
         setLore(lore);
+        this.slot = slot;
     }
 
     public Item setDisplayName(String displayName) {
