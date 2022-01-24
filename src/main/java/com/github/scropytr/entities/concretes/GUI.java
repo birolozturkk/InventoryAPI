@@ -51,11 +51,12 @@ public class GUI implements InventoryHolder {
     }
 
     public void addItem(Item item) {
-        this.inventory.setItem(inventory.firstEmpty(), item.getItemStack());
+        item.setSlot(inventory.firstEmpty());
+        setItem(item);
     }
 
     public void addItemMultiple(List<Item> itemList) {
-        this.items = itemList;
+        itemList.forEach(this::setItem);
     }
 
     public void onOpen(InventoryOpenEvent event) {

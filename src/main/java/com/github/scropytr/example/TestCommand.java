@@ -54,8 +54,11 @@ public class TestCommand implements CommandExecutor {
                 clickEvent.getWhoClicked().sendMessage("sayfa : "+pagination.getCurrentPage());
             });
 
-            exampleGUI.setItem(42, nextButton);
-            exampleGUI.setItem(40, previousButton);
+            nextButton.setSlot(42);
+            previousButton.setSlot(40);
+
+            exampleGUI.setItem(nextButton);
+            exampleGUI.setItem(previousButton);
 
             exampleGUI.open(player);
         }
