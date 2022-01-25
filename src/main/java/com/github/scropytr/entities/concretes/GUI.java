@@ -11,6 +11,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Getter
@@ -18,7 +19,7 @@ public class GUI implements InventoryHolder {
 
     private String title;
     private int size;
-    private List<Item> items = new ArrayList<>();
+    private HashMap<Integer, Item> items = new HashMap<>();
 
     private transient Inventory inventory;
 
@@ -46,7 +47,7 @@ public class GUI implements InventoryHolder {
         if (this.inventory.getSize() <= slot) {
             throw new IndexOutOfBoundsException("Slot cannot be bigger than inventory size!");
         }
-        this.items.add(item);
+        this.items.put(slot, item);
         this.inventory.setItem(slot, item.getItemStack());
     }
 
@@ -55,7 +56,7 @@ public class GUI implements InventoryHolder {
         setItem(item);
     }
 
-    public void addItemMultiple(List<Item> itemList) {
+    public void setItemMultiple(List<Item> itemList) {
         itemList.forEach(this::setItem);
     }
 

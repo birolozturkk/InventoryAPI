@@ -22,6 +22,9 @@ public class Item {
     private transient ItemMeta meta;
     private transient Click click;
 
+    public Item() {
+    }
+
     public Item(ItemStack itemStack, Click click) {
         this(itemStack);
         this.click = click;
@@ -82,5 +85,17 @@ public class Item {
 
     public void setSlot(int slot) {
         this.slot = slot;
+    }
+
+    public void setItemStack(ItemStack itemStack) {
+        this.itemStack = itemStack;
+    }
+
+    public void setMeta(ItemMeta meta) {
+        this.meta = meta;
+    }
+
+    public void setClick(Click click) {
+        this.click = click;
     }
 }

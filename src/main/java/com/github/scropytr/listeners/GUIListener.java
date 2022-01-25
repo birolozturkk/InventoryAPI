@@ -20,7 +20,7 @@ public class GUIListener implements Listener {
                 gui.onClick(event);
 
                 Item item = gui.getItemBySlot(event.getSlot());
-                if(item ==null || item.getClick()==null) return;
+                if(item == null || item.getClick()== null) return;
                 item.getClick().onClick(event);
             }
         }
