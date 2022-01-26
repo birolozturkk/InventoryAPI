@@ -22,9 +22,6 @@ public class Item {
     private transient ItemMeta meta;
     private transient Click click;
 
-    public Item() {
-    }
-
     public Item(ItemStack itemStack, Click click) {
         this(itemStack);
         this.click = click;
@@ -34,7 +31,7 @@ public class Item {
         this.itemStack = itemStack;
         this.meta = itemStack.getItemMeta();
         this.click = event -> {};
-        if(itemStack.getItemMeta() != meta) itemStack.setItemMeta(meta);
+        if(itemStack.getItemMeta() != meta) build();
     }
 
     public Item(String displayName, int slot, Material material, int data, int amount, List<String> lore) {
@@ -85,6 +82,10 @@ public class Item {
 
     public void setSlot(int slot) {
         this.slot = slot;
+    }
+
+    public void build() {
+        itemStack.setItemMeta(meta);
     }
 
     public void setItemStack(ItemStack itemStack) {
