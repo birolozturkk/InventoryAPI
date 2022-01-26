@@ -52,31 +52,26 @@ public class Item {
 
     public Item setDisplayName(String displayName) {
         this.displayName = displayName;
-        this.meta.setDisplayName(displayName);
         return this;
     }
 
     public Item setMaterial(Material material) {
         this.material = material;
-        this.itemStack.setType(material);
         return this;
     }
 
     public Item setData(int data) {
         this.data = data;
-        this.itemStack.setDurability((short) data);
         return this;
     }
 
     public Item setAmount(int amount) {
         this.amount = amount;
-        this.itemStack.setAmount(amount);
         return this;
     }
 
     public Item setLore(List<String> lore) {
         this.lore = lore;
-        this.meta.setLore(lore);
         return this;
     }
 
@@ -85,11 +80,17 @@ public class Item {
     }
 
     public void build() {
+        meta.setDisplayName(displayName);
+        meta.setLore(lore);
+        itemStack.setAmount(amount);
+        itemStack.setType(material);
+        itemStack.setDurability((short) data);
         itemStack.setItemMeta(meta);
     }
 
     public void setItemStack(ItemStack itemStack) {
         this.itemStack = itemStack;
+        meta = itemStack.getItemMeta();
     }
 
     public void setMeta(ItemMeta meta) {
