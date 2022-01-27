@@ -11,13 +11,14 @@ import java.util.List;
 @Getter
 public class Item {
 
-    private Material material;
+    private String material;
     private int slot;
     private String displayName;
     private int amount;
     private int data;
     private List<String> lore;
 
+    private transient Material materialType;
     private transient ItemStack itemStack;
     private transient ItemMeta meta;
     private transient Click click;
@@ -39,7 +40,7 @@ public class Item {
         setAmount(amount);
         setLore(lore);
         setData(data);
-        setMaterial(material);
+        setMaterialType(material);
         this.slot = slot;
     }
 
@@ -49,7 +50,7 @@ public class Item {
         setAmount(amount);
         setLore(lore);
         setData(data);
-        setMaterial(material);
+        setMaterialType(material);
         this.slot = slot;
     }
 
@@ -58,8 +59,8 @@ public class Item {
         return this;
     }
 
-    public Item setMaterial(Material material) {
-        this.material = material;
+    public Item setMaterialType(Material materialType) {
+        this.materialType = materialType;
         return this;
     }
 
@@ -86,7 +87,7 @@ public class Item {
         meta.setDisplayName(displayName);
         meta.setLore(lore);
         itemStack.setAmount(amount);
-        itemStack.setType(material);
+        itemStack.setType(materialType);
         itemStack.setDurability((short) data);
         itemStack.setItemMeta(meta);
     }
