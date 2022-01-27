@@ -1,6 +1,6 @@
-package com.github.scropytr.entities.concretes;
+package com.github.scropytr.legendinventoryapi.entities.concretes;
 
-import com.github.scropytr.entities.abstracts.Click;
+import com.github.scropytr.legendinventoryapi.entities.abstracts.Click;
 import lombok.Getter;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -31,7 +31,6 @@ public class Item {
         this.itemStack = itemStack;
         this.meta = itemStack.getItemMeta();
         this.click = event -> {};
-        if(itemStack.getItemMeta() != meta) build();
     }
 
     public Item(String displayName, int slot, Material material, int data, int amount, List<String> lore) {
@@ -39,6 +38,8 @@ public class Item {
         setDisplayName(displayName);
         setAmount(amount);
         setLore(lore);
+        setData(data);
+        setMaterial(material);
         this.slot = slot;
     }
 
@@ -47,6 +48,8 @@ public class Item {
         setDisplayName(displayName);
         setAmount(amount);
         setLore(lore);
+        setData(data);
+        setMaterial(material);
         this.slot = slot;
     }
 

@@ -1,7 +1,10 @@
-package com.github.scropytr.example;
+package com.github.scropytr.legendinventoryapi.example;
 
-import com.github.scropytr.entities.concretes.Item;
-import com.github.scropytr.entities.concretes.Pagination;
+import com.github.scropytr.legendinventoryapi.InventoryAPI;
+import com.github.scropytr.legendinventoryapi.entities.concretes.HeadItem;
+import com.github.scropytr.legendinventoryapi.entities.concretes.Item;
+import com.github.scropytr.legendinventoryapi.entities.concretes.Pagination;
+import com.github.scropytr.legendinventoryapi.entities.concretes.PlayerHeadItem;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -15,9 +18,9 @@ import java.util.List;
 
 public class TestCommand implements CommandExecutor {
 
-    com.github.scropytr.InventoryAPI inventoryAPI;
+    InventoryAPI inventoryAPI;
 
-    public TestCommand(com.github.scropytr.InventoryAPI inventoryAPI) {
+    public TestCommand(InventoryAPI inventoryAPI) {
         this.inventoryAPI = inventoryAPI;
     }
 
@@ -53,12 +56,15 @@ public class TestCommand implements CommandExecutor {
                 pagination.previousPage(clickEvent.getWhoClicked());
                 clickEvent.getWhoClicked().sendMessage("sayfa : "+pagination.getCurrentPage());
             });
-
+            PlayerHeadItem playerHeadItem = new PlayerHeadItem("s", "head;%player%".replace("%player%", "BlackOPS").split("head;")[1], 1, 1, Arrays.asList("line1", "line2"));
+            //HeadItem headItem = new HeadItem("s", "head;%player%".replace("%player%", "BlackOPS"), 10 , 1, Arrays.asList("line1", "line2"));
             nextButton.setSlot(42);
             previousButton.setSlot(40);
 
             exampleGUI.setItem(nextButton);
             exampleGUI.setItem(previousButton);
+            exampleGUI.setItem(playerHeadItem);
+            //exampleGUI.setItem(headItem);
 
             exampleGUI.open(player);
         }

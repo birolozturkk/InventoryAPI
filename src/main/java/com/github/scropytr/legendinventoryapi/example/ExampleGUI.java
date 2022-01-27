@@ -1,7 +1,6 @@
-package com.github.scropytr.example;
+package com.github.scropytr.legendinventoryapi.example;
 
-import com.github.scropytr.InventoryAPI;
-import com.github.scropytr.entities.concretes.GUI;
+import com.github.scropytr.legendinventoryapi.entities.concretes.GUI;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;

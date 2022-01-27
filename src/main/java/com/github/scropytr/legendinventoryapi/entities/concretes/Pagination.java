@@ -1,4 +1,4 @@
-package com.github.scropytr.entities.concretes;
+package com.github.scropytr.legendinventoryapi.entities.concretes;
 
 import lombok.Data;
 import org.bukkit.Material;

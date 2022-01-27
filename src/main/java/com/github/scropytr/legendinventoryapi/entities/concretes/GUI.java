@@ -1,4 +1,4 @@
-package com.github.scropytr.entities.concretes;
+package com.github.scropytr.legendinventoryapi.entities.concretes;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,7 +10,6 @@ import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
