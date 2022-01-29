@@ -45,9 +45,6 @@ public class HeadItem extends Item {
     public void build() {
         meta.setDisplayName(getDisplayName());
         meta.setLore(getLore());
-        getItemStack().setAmount(getAmount());
-        getItemStack().setType(Material.valueOf(material));
-        getItemStack().setDurability((short) getData());
         getItemStack().setItemMeta(meta);
     }
 }
