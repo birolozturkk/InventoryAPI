@@ -94,5 +94,9 @@ public class GUI implements InventoryHolder {
         this.inventory = Bukkit.createInventory(this, size, title);
     }
 
+    public void createInventory() {
+        this.inventory = Bukkit.createInventory(this, size, title);
+    }
+
 
 }
