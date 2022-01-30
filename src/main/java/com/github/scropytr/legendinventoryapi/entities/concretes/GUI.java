@@ -83,11 +83,11 @@ public class GUI implements InventoryHolder {
     }
 
     public void setTitle(String title) {
-        createInventory(this.size, title);
+        this.title = title;
     }
 
     public void setSize(int size) {
-        createInventory(size, this.title);
+        this.size = size;
     }
 
     public void createInventory(int size, String title) {
