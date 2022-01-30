@@ -15,10 +15,8 @@ public class PlayerHeadItem extends Item {
     public PlayerHeadItem(String displayName, String headName, int slot, int amount, List<String> lore) {
         super(displayName, slot, Material.SKULL_ITEM, 3, amount, lore);
 
-        UUID hashAsId = new UUID((long)headName.hashCode(), (long)headName.hashCode());
-        setItemStack(Bukkit.getUnsafe().modifyItemStack(getItemStack(), "{SkullOwner:{Id:\"" + hashAsId + "\",Properties:{textures:[{Value:\"" + headName + "\"}]}}}"));
+        meta.setOwner(headName);
         meta = (SkullMeta) getItemStack().getItemMeta();
-        //build();
     }
 
     @Override
