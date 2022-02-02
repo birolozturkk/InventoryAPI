@@ -1,5 +1,6 @@
-package com.github.scropytr.legendinventoryapi.entities.concretes;
+package com.github.scropytr.legendinventoryapi.gui;
 
+import com.github.scropytr.legendinventoryapi.item.Item;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Bukkit;
@@ -41,8 +42,7 @@ public class GUI implements InventoryHolder {
         player.openInventory(this.inventory);
     }
 
-    public void setItem(Item item) {
-        int slot = item.getSlot();
+    public void setItem(Item item, int slot) {
         if (this.inventory.getSize() <= slot) {
             throw new IndexOutOfBoundsException("Slot cannot be bigger than inventory size!");
         }
@@ -51,12 +51,7 @@ public class GUI implements InventoryHolder {
     }
 
     public void addItem(Item item) {
-        item.setSlot(inventory.firstEmpty());
-        setItem(item);
-    }
-
-    public void setItemMultiple(List<Item> itemList) {
-        itemList.forEach(this::setItem);
+        setItem(item, inventory.firstEmpty());
     }
 
     public void onOpen(InventoryOpenEvent event) {

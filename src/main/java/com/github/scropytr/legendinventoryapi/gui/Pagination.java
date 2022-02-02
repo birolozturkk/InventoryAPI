@@ -1,5 +1,6 @@
-package com.github.scropytr.legendinventoryapi.entities.concretes;
+package com.github.scropytr.legendinventoryapi.gui;
 
+import com.github.scropytr.legendinventoryapi.item.Item;
 import lombok.Data;
 import org.bukkit.Material;
 import org.bukkit.entity.HumanEntity;
@@ -29,18 +30,18 @@ public class Pagination {
         refreshGUI(currentPage);
     }
 
-    public boolean refreshGUI(int newPage) {
+    public boolean refreshGUI(int newPage) {//5
 
-        int itemsSize = this.items.size();
-        int slotsSize = this.slots.size();
+        int itemsSize = this.items.size(); //100
+        int slotsSize = this.slots.size(); //20
 
         int m = 0;
         for (int first = newPage * slotsSize; first < (newPage + 1) * slotsSize; first++) {
+            if(itemsSize/slotsSize == newPage) return false;
             Item item;
             if (first >= itemsSize) item = new Item(new ItemStack(Material.AIR));
             else item = this.items.get(first);
-            item.setSlot(this.slots.get(m));
-            this.gui.setItem(item);
+            this.gui.setItem(item, slots.get(m));
             m++;
         }
         return true;

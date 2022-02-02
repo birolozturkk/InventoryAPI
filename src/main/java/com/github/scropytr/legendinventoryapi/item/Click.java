@@ -1,4 +1,4 @@
-package com.github.scropytr.legendinventoryapi.entities.abstracts;
+package com.github.scropytr.legendinventoryapi.item;
 
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryMoveItemEvent;

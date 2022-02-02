@@ -13,6 +13,7 @@ public class InventoryAPI extends JavaPlugin {
     public void onEnable() {
         super.onEnable();
         getCommand("test").setExecutor(new TestCommand(this));
+        setup(this);
     }
 
     public static void setup(Plugin plugin){

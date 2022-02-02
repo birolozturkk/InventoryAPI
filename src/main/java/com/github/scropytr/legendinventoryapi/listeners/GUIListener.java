@@ -1,7 +1,7 @@
 package com.github.scropytr.legendinventoryapi.listeners;
 
-import com.github.scropytr.legendinventoryapi.entities.concretes.GUI;
-import com.github.scropytr.legendinventoryapi.entities.concretes.Item;
+import com.github.scropytr.legendinventoryapi.gui.GUI;
+import com.github.scropytr.legendinventoryapi.item.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

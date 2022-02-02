@@ -1,10 +1,9 @@
 package com.github.scropytr.legendinventoryapi.example;
 
 import com.github.scropytr.legendinventoryapi.InventoryAPI;
-import com.github.scropytr.legendinventoryapi.entities.concretes.HeadItem;
-import com.github.scropytr.legendinventoryapi.entities.concretes.Item;
-import com.github.scropytr.legendinventoryapi.entities.concretes.Pagination;
-import com.github.scropytr.legendinventoryapi.entities.concretes.PlayerHeadItem;
+import com.github.scropytr.legendinventoryapi.gui.Pagination;
+import com.github.scropytr.legendinventoryapi.item.Item;
+import com.github.scropytr.legendinventoryapi.item.ItemBuilder;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -26,45 +25,40 @@ public class TestCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(sender instanceof Player){
+        if (sender instanceof Player) {
             Player player = (Player) sender;
 
-            ExampleGUI exampleGUI = new ExampleGUI("exampleGUI", 54);
-            Pagination pagination = exampleGUI.getPagination();
+            ExampleGUI exampleGUI = new ExampleGUI("exampleGUI", 27);
 
             List<Item> items = new ArrayList<>();
-
-            for(int i = 0; i < 304; i++){
-                int finalI = i;
-                Item item = new Item(new ItemStack(Material.GOLD_BLOCK), event -> {
-                    event.getWhoClicked().sendMessage(String.valueOf(finalI));
-                });
+            for (int i = 0; i <= 99; i++) {
+                Item item = new ItemBuilder(Material.SKULL_ITEM).setDisplayName("display name").setLore(Arrays.asList("s", "s1", "s2")).setTexture("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzYxZDY1N2M2ZWUwODNiZGE1NjQxMzQ1N2Y3YzEwY2JhZmVkNjdlMmJkNmFjOWYzZjRlNDg1Yzk0Zjg5Yjg3MSJ9fX0=").build();
                 items.add(item);
             }
 
-            pagination.setSlots(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35));
+            Pagination pagination = exampleGUI.getPagination();
+            pagination.setSlots(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19));
+
             pagination.setItems(items);
 
-            Item nextButton = new Item(new ItemStack(Material.PAPER), clickEvent -> {
-                clickEvent.setCancelled(true);
-                pagination.nextPage(clickEvent.getWhoClicked());
-                clickEvent.getWhoClicked().sendMessage("sayfa : "+pagination.getCurrentPage());
-            });
+            Item nextPageButton = new ItemBuilder(Material.SKULL_ITEM).setDisplayName("next")
+                    .setTexture("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWE5MmFkNDU2Zjc2ZWM3Y2FhMzU5NTkyMmQ1ZmNjMzhkY2E5MjhkYzY3MTVmNzUyZTc0YzhkZGRlMzQ0ZSJ9fX0=")
+                    .setAction(clickEvent -> {
+                        pagination.nextPage(player);
+                        System.out.println("sonraki sayfaya geçiş yapıldı");
+                    }).build();
 
-            Item previousButton = new Item(new ItemStack(Material.PAPER), clickEvent -> {
-                clickEvent.setCancelled(true);
-                pagination.previousPage(clickEvent.getWhoClicked());
-                clickEvent.getWhoClicked().sendMessage("sayfa : "+pagination.getCurrentPage());
-            });
-            PlayerHeadItem playerHeadItem = new PlayerHeadItem("s", "head;%player%".replace("%player%", "BlackOPS").split("head;")[1], 1, 1, Arrays.asList("line1", "line2"));
-            //HeadItem headItem = new HeadItem("s", "head;%player%".replace("%player%", "BlackOPS"), 10 , 1, Arrays.asList("line1", "line2"));
-            nextButton.setSlot(42);
-            previousButton.setSlot(40);
+            Item previousPageButton = new ItemBuilder(Material.SKULL_ITEM).setDisplayName("previous")
+                    .setTexture("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGZhNjA1ZTI1ZjRmYzJjZWE1YTc2NmQ3OWE4YmZhMjkwMzEzZTQ1ZDhmNWU5NTdkOTU4YTBmMzNmY2IxNiJ9fX0=")
+                    .setAction(clickEvent -> {
+                        pagination.previousPage(player);
+                        System.out.println("önceki sayfaya geçiş yapıldı");
+                    })
+                    .build();
 
-            exampleGUI.setItem(nextButton);
-            exampleGUI.setItem(previousButton);
-            exampleGUI.setItem(playerHeadItem);
-            //exampleGUI.setItem(headItem);
+
+            exampleGUI.setItem(nextPageButton, 23);
+            exampleGUI.setItem(previousPageButton, 22);
 
             exampleGUI.open(player);
         }

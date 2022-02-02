@@ -64,11 +64,14 @@ public class ExampleGUI extends GUI {
 ``` java
     ExampleGUI exampleGUI = new ExampleGUI(inventoryAPI, "exampleGUI", 54);
 
-    ItemX item = new ItemX(new ItemStack(Material.GOLD), event -> {
-        event.setCancelled(true);
-    });
+    Item item = new ItemBuilder(Material.SKULL_ITEM).setDisplayName("display name").setLore(Arrays.asList("s", "s1", "s2"))
+            .setTexture("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzYxZDY1N2M2ZWUwODNiZGE1NjQxMzQ1N2Y3YzEwY2JhZmVkNjdlMmJkNmFjOWYzZjRlNDg1Yzk0Zjg5Yjg3MSJ9fX0=")
+            .setAction(clickEvent -> {
+                clickEvent.setCancelled(true);
+            })
+            .build();
 
-    exampleGUI.setItem(2, item);
+    exampleGUI.setItem(item, 2);
     exampleGUI.addItem(item);
 
     exampleGUI.open(player);
@@ -82,33 +85,33 @@ public class ExampleGUI extends GUI {
     ExampleGUI exampleGUI = new ExampleGUI(inventoryAPI, "exampleGUI", 54);
     Pagination pagination = exampleGUI.getPagination();
 
-    List<ItemX> items = new ArrayList<>();
-
-    for(int i = 0; i < 304; i++){
-        int finalI = i;
-        ItemX item = new ItemX(new ItemStack(Material.GOLD_BLOCK), event -> {
-            event.getWhoClicked().sendMessage(String.valueOf(finalI));
-        });
+    List<Item> items = new ArrayList<>();
+    for (int i = 0; i <= 99; i++) {
+        Item item = new ItemBuilder(Material.SKULL_ITEM).setDisplayName("display name").setLore(Arrays.asList("s", "s1", "s2")).setTexture("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzYxZDY1N2M2ZWUwODNiZGE1NjQxMzQ1N2Y3YzEwY2JhZmVkNjdlMmJkNmFjOWYzZjRlNDg1Yzk0Zjg5Yjg3MSJ9fX0=").build();
         items.add(item);
     }
 
-    pagination.setSlots(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35));
+    Pagination pagination = exampleGUI.getPagination();
+    pagination.setSlots(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19));
+
     pagination.setItems(items);
 
-    ItemX nextButton = new ItemX(new ItemStack(Material.PAPER), event -> {
-        event.setCancelled(true);
-        pagination.nextPage(event.getWhoClicked());
-        event.getWhoClicked().sendMessage("sayfa : "+pagination.getCurrentPage());
-    });
+    Item nextPageButton = new ItemBuilder(Material.SKULL_ITEM).setDisplayName("next")
+            .setTexture("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWE5MmFkNDU2Zjc2ZWM3Y2FhMzU5NTkyMmQ1ZmNjMzhkY2E5MjhkYzY3MTVmNzUyZTc0YzhkZGRlMzQ0ZSJ9fX0=")
+            .setAction(clickEvent -> {
+                pagination.nextPage(player);
+            }).build();
 
-    ItemX previousButton = new ItemX(new ItemStack(Material.PAPER), event -> {
-        event.setCancelled(true);
-        pagination.previousPage(event.getWhoClicked());
-        event.getWhoClicked().sendMessage("sayfa : "+pagination.getCurrentPage());
-    });
+    Item previousPageButton = new ItemBuilder(Material.SKULL_ITEM).setDisplayName("previous")
+            .setTexture("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGZhNjA1ZTI1ZjRmYzJjZWE1YTc2NmQ3OWE4YmZhMjkwMzEzZTQ1ZDhmNWU5NTdkOTU4YTBmMzNmY2IxNiJ9fX0=")
+            .setAction(clickEvent -> {
+                pagination.previousPage(player);
+            })
+            .build();
 
-    exampleGUI.setItem(42, nextButton);
-    exampleGUI.setItem(40, previousButton);
+
+    exampleGUI.setItem(nextPageButton, 23);
+    exampleGUI.setItem(previousPageButton, 22);
 
     exampleGUI.open(player);
 
