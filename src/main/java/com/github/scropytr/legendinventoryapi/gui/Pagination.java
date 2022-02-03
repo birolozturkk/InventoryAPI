@@ -50,6 +50,7 @@ public class Pagination {
         if(newPage<0) return;
         if(newPage>=this.items.size()/this.slots.size()) return;
         this.currentPage = newPage;
+        refreshGUI(newPage);
         viewer.openInventory(this.gui.getInventory());
 
     }
