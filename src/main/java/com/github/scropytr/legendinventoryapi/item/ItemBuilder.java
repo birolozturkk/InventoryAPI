@@ -79,6 +79,14 @@ public class ItemBuilder {
         return this;
     }
 
+    public ItemBuilder setSkullOwner(String headName) {
+        if(itemStack == null) itemStack = new ItemStack(Material.SKULL_ITEM, amount, (short) 3);
+        SkullMeta meta = (SkullMeta) itemStack.getItemMeta();
+        meta.setOwner(headName);
+        itemStack.setItemMeta(meta);
+        return this;
+    }
+
     public Item build() {
         if(itemStack == null) itemStack = new ItemStack(material, amount, data);
         ItemMeta meta = itemStack.getItemMeta();
