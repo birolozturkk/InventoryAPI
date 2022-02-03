@@ -69,7 +69,9 @@ public class GUI implements InventoryHolder {
     }
 
     public Pagination getPagination() {
-        if (this.pagination == null) return new Pagination(this);
+        if (this.pagination == null) {
+            this.pagination = new Pagination(this);
+        }
         return pagination;
     }
 

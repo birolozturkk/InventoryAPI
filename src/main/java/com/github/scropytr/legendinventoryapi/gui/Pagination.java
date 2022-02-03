@@ -37,7 +37,6 @@ public class Pagination {
 
         int m = 0;
         for (int first = newPage * slotsSize; first < (newPage + 1) * slotsSize; first++) {
-            if(itemsSize/slotsSize == newPage) return false;
             Item item;
             if (first >= itemsSize) item = new Item(new ItemStack(Material.AIR));
             else item = this.items.get(first);
@@ -49,8 +48,7 @@ public class Pagination {
 
     public void setPage(HumanEntity viewer, int newPage) {
         if(newPage<0) return;
-        if(newPage>this.items.size()/this.slots.size()) return;
-        if (!refreshGUI(newPage)) return;
+        if(newPage>=this.items.size()/this.slots.size()) return;
         this.currentPage = newPage;
         viewer.openInventory(this.gui.getInventory());
 
