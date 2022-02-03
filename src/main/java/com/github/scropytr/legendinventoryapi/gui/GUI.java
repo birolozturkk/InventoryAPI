@@ -89,10 +89,11 @@ public class GUI implements InventoryHolder {
 
     public void createInventory(int size, String title) {
         this.inventory = Bukkit.createInventory(this, size, title);
+        items.forEach((slot, item) -> inventory.setItem(slot, item.getItemStack()));
     }
 
     public void createInventory() {
-        this.inventory = Bukkit.createInventory(this, size, title);
+        createInventory(size, title);
     }
 
 
