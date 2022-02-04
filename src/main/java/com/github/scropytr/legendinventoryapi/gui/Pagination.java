@@ -25,15 +25,15 @@ public class Pagination {
         this.currentPage = 0;
     }
 
-    public void setItems(List<Item> items){
+    public void setItems(List<Item> items) {
         this.items = items;
         refreshGUI(currentPage);
     }
 
     public boolean refreshGUI(int newPage) {//5
 
-        int itemsSize = this.items.size(); //100
-        int slotsSize = this.slots.size(); //20
+        int itemsSize = this.items.size(); //8
+        int slotsSize = this.slots.size(); //3
 
         int m = 0;
         for (int first = newPage * slotsSize; first < (newPage + 1) * slotsSize; first++) {
@@ -47,8 +47,8 @@ public class Pagination {
     }
 
     public void setPage(HumanEntity viewer, int newPage) {
-        if(newPage<0) return;
-        if(newPage>=this.items.size()/this.slots.size()) return;
+        if (newPage < 0) return;
+        if (newPage >= (double) this.items.size() / (double) this.slots.size()) return;
         this.currentPage = newPage;
         refreshGUI(newPage);
         viewer.openInventory(this.gui.getInventory());
