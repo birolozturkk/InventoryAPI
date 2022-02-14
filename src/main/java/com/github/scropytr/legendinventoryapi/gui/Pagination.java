@@ -1,5 +1,6 @@
 package com.github.scropytr.legendinventoryapi.gui;
 
+import com.cryptomorin.xseries.XMaterial;
 import com.github.scropytr.legendinventoryapi.item.Item;
 import lombok.Data;
 import org.bukkit.Material;
@@ -38,7 +39,7 @@ public class Pagination {
         int m = 0;
         for (int first = newPage * slotsSize; first < (newPage + 1) * slotsSize; first++) {
             Item item;
-            if (first >= itemsSize) item = new Item(new ItemStack(Material.AIR));
+            if (first >= itemsSize) item = new Item(XMaterial.AIR);
             else item = this.items.get(first);
             this.gui.setItem(item, slots.get(m));
             m++;

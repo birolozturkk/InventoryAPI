@@ -98,5 +98,10 @@
             <version>1.5.21</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>com.github.cryptomorin</groupId>
+            <artifactId>XSeries</artifactId>
+            <version>8.6.1</version>
+        </dependency>
     </dependencies>
 </project>

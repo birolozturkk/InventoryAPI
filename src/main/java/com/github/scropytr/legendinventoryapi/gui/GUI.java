@@ -92,8 +92,12 @@ public class GUI implements InventoryHolder {
         items.forEach((slot, item) -> inventory.setItem(slot, item.getItemStack()));
     }
 
-    public void createInventory() {
-        createInventory(size, title);
+    public void update(Player player, String title) {/*
+        EntityPlayer entityPlayer = ((CraftPlayer) player).getHandle();
+        PacketPlayOutOpenWindow packet = new PacketPlayOutOpenWindow(entityPlayer.activeContainer.windowId, "minecraft:chest",
+                new ChatMessage(title), player.getOpenInventory().getTopInventory().getSize());
+        entityPlayer.playerConnection.sendPacket(packet);
+        entityPlayer.updateInventory(entityPlayer.activeContainer);*/
     }
 
 
