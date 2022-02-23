@@ -17,7 +17,7 @@ import java.util.UUID;
 @Getter
 public class Item {
 
-    private XMaterial material = XMaterial.AIR;
+    private XMaterial material;
     private String displayName = "";
     private int amount = 1;
     private short data = 0;
@@ -27,6 +27,7 @@ public class Item {
     private transient Click click = clickEvent -> {};
 
     public Item(XMaterial material) {
+        this.material = material;
         this.itemStack = material.parseItem();
     }
 
@@ -40,11 +41,6 @@ public class Item {
         return this;
     }
 
-    public Item setData(short data) {
-        this.data = data;
-        return this;
-    }
-
     public Item setLore(List<String> lore) {
         this.lore = lore;
         return this;
@@ -55,8 +51,12 @@ public class Item {
         return this;
     }
 
+    public void setMaterial(XMaterial material) {
+        this.material = material;
+    }
+
     public Item setTexture(String texture) {
-        if(itemStack == null) itemStack = XMaterial.PLAYER_HEAD.parseItem();
+        if(!(material == XMaterial.PLAYER_HEAD)) return this;
         itemStack.setAmount(amount);
         SkullMeta meta = (SkullMeta) itemStack.getItemMeta();
 
@@ -78,8 +78,8 @@ public class Item {
     }
 
     public Item setSkullOwner(String headName) {
-        if(itemStack == null) itemStack = XMaterial.PLAYER_HEAD.parseItem();
-        itemStack.setAmount((short) 3);
+        if(!(material == XMaterial.PLAYER_HEAD)) return this;
+        itemStack.setAmount(amount);
         SkullMeta meta = (SkullMeta) itemStack.getItemMeta();
         meta.setOwner(headName);
         itemStack.setItemMeta(meta);

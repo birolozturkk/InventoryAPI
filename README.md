@@ -28,7 +28,7 @@ Add to onEnable method of your plugin
 ## Usage
 
 ``` java
-public class ExampleGUI extends GUI {
+public class ExampleGUI extends GUI /*PaginatedGUI*/ {
 
     public ExampleGUI(InventoryAPI inventoryAPI, String title, int size) {
         super(inventoryAPI, title, size);
@@ -62,14 +62,12 @@ public class ExampleGUI extends GUI {
 ### Simple GUI
 
 ``` java
-    ExampleGUI exampleGUI = new ExampleGUI(inventoryAPI, "exampleGUI", 54);
 
-    Item item = new ItemBuilder(Material.SKULL_ITEM).setDisplayName("display name").setLore(Arrays.asList("s", "s1", "s2"))
-            .setTexture("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzYxZDY1N2M2ZWUwODNiZGE1NjQxMzQ1N2Y3YzEwY2JhZmVkNjdlMmJkNmFjOWYzZjRlNDg1Yzk0Zjg5Yjg3MSJ9fX0=")
-            .setAction(clickEvent -> {
-                clickEvent.setCancelled(true);
-            })
-            .build();
+    //ExampleGUI extends GUI
+    ExampleGUI exampleGUI = new ExampleGUI("Title", 27);
+    
+    Item item = new Item(XMaterial.CARROT).setDisplayName("display_name").setAmount(12)
+            .setLore(Arrays.asList("line 1", "line 2", "line 3")).build();
 
     exampleGUI.setItem(item, 2);
     exampleGUI.addItem(item);
@@ -82,32 +80,35 @@ public class ExampleGUI extends GUI {
 ### Paginated GUI
 
 ``` java
-    ExampleGUI exampleGUI = new ExampleGUI(inventoryAPI, "exampleGUI", 54);
-    Pagination pagination = exampleGUI.getPagination();
+
+    //ExampleGUI extends PaginatedGUI
+    ExampleGUI exampleGUI = new ExampleGUI("title", 54);
 
     List<Item> items = new ArrayList<>();
-    for (int i = 0; i <= 99; i++) {
-        Item item = new ItemBuilder(Material.SKULL_ITEM).setDisplayName("display name").setLore(Arrays.asList("s", "s1", "s2")).setTexture("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzYxZDY1N2M2ZWUwODNiZGE1NjQxMzQ1N2Y3YzEwY2JhZmVkNjdlMmJkNmFjOWYzZjRlNDg1Yzk0Zjg5Yjg3MSJ9fX0=").build();
+    for (int i = 0; i <= 105; i++) {
+        Item item = new Item(XMaterial.CACTUS).build();
+        item.setAction(clickEvent -> {
+            clickEvent.getWhoClicked().sendMessage("clicked");
+        });
         items.add(item);
     }
 
-    Pagination pagination = exampleGUI.getPagination();
-    pagination.setSlots(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19));
+    exampleGUI.setSlots(Arrays.asList(0, 1, 2, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 17));
+    exampleGUI.setItems(items);
 
-    pagination.setItems(items);
-
-    Item nextPageButton = new ItemBuilder(Material.SKULL_ITEM).setDisplayName("next")
+    Item nextPageButton = new Item(XMaterial.PLAYER_HEAD).setDisplayName("next")
             .setTexture("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWE5MmFkNDU2Zjc2ZWM3Y2FhMzU5NTkyMmQ1ZmNjMzhkY2E5MjhkYzY3MTVmNzUyZTc0YzhkZGRlMzQ0ZSJ9fX0=")
             .setAction(clickEvent -> {
-                pagination.nextPage(player);
+                exampleGUI.nextPage(player);
+                clickEvent.getWhoClicked().sendMessage("Sayfa: " + exampleGUI.getCurrentPage());
             }).build();
 
-    Item previousPageButton = new ItemBuilder(Material.SKULL_ITEM).setDisplayName("previous")
+    Item previousPageButton = new Item(XMaterial.PLAYER_HEAD).setDisplayName("previous")
             .setTexture("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGZhNjA1ZTI1ZjRmYzJjZWE1YTc2NmQ3OWE4YmZhMjkwMzEzZTQ1ZDhmNWU5NTdkOTU4YTBmMzNmY2IxNiJ9fX0=")
             .setAction(clickEvent -> {
-                pagination.previousPage(player);
-            })
-            .build();
+                exampleGUI.previousPage(player);
+                clickEvent.getWhoClicked().sendMessage("Sayfa: " + exampleGUI.getCurrentPage());
+            }).build();
 
 
     exampleGUI.setItem(nextPageButton, 23);

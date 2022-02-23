@@ -1,7 +1,9 @@
 package com.github.scropytr.legendinventoryapi.gui;
 
 import com.github.scropytr.legendinventoryapi.item.Item;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -12,10 +14,9 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 
 import java.util.HashMap;
-import java.util.List;
 
 @Getter
-public class GUI implements InventoryHolder {
+public abstract class GUI implements InventoryHolder {
 
     private String title;
     private int size;
@@ -23,13 +24,10 @@ public class GUI implements InventoryHolder {
 
     private transient Inventory inventory;
 
-    @Setter
-    private transient Pagination pagination;
-
     public GUI(String title, int size) {
         this.title = title;
         this.size = size;
-        createInventory(size, title);
+        this.inventory = Bukkit.createInventory(this, size, title);
     }
 
     public GUI(Inventory inventory) {
@@ -54,26 +52,9 @@ public class GUI implements InventoryHolder {
         setItem(item, inventory.firstEmpty());
     }
 
-    public void onOpen(InventoryOpenEvent event) {
-    }
-
-    public void onClose(InventoryCloseEvent event) {
-    }
-
-    public void onClick(InventoryClickEvent event) {
-    }
-
-    @Override
-    public Inventory getInventory() {
-        return this.inventory;
-    }
-
-    public Pagination getPagination() {
-        if (this.pagination == null) {
-            this.pagination = new Pagination(this);
-        }
-        return pagination;
-    }
+    public abstract void onOpen(InventoryOpenEvent event);
+    public abstract void onClose(InventoryCloseEvent event);
+    public abstract void onClick(InventoryClickEvent event);
 
     public Item getItemBySlot(int slot) {
         return this.items.get(slot);

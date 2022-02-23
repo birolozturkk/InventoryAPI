@@ -1,11 +1,11 @@
 package com.github.scropytr.legendinventoryapi.example;
 
-import com.github.scropytr.legendinventoryapi.gui.GUI;
+import com.github.scropytr.legendinventoryapi.gui.PaginatedGUI;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 
-public class ExampleGUI extends GUI {
+public class ExampleGUI extends PaginatedGUI {
 
     public ExampleGUI(String title, int size) {
         super(title, size);
@@ -13,23 +13,17 @@ public class ExampleGUI extends GUI {
 
     @Override
     public void onOpen(InventoryOpenEvent event) {
-        super.onOpen(event);
-
-        event.getPlayer().sendMessage("Inventory opened");
 
     }
 
     @Override
     public void onClose(InventoryCloseEvent event) {
-        super.onClose(event);
 
-        event.getPlayer().sendMessage("Inventory closed");
     }
 
     @Override
     public void onClick(InventoryClickEvent event) {
-        super.onClick(event);
-
         event.setCancelled(true);
     }
+
 }
