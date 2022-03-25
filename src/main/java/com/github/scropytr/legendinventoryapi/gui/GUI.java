@@ -1,10 +1,7 @@
 package com.github.scropytr.legendinventoryapi.gui;
 
 import com.github.scropytr.legendinventoryapi.item.Item;
-import lombok.Data;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
