@@ -53,6 +53,8 @@ public abstract class GUI implements InventoryHolder {
     public abstract void onClose(InventoryCloseEvent event);
     public abstract void onClick(InventoryClickEvent event);
 
+    public abstract void addContent();
+
     public Item getItemBySlot(int slot) {
         return this.items.get(slot);
     }
