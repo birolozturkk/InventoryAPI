@@ -26,4 +26,9 @@ public class ExampleGUI extends PaginatedGUI {
         event.setCancelled(true);
     }
 
+    @Override
+    public void addContent() {
+
+    }
+
 }
