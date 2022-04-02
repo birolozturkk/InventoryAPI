@@ -103,10 +103,5 @@
             <artifactId>XSeries</artifactId>
             <version>8.6.1</version>
         </dependency>
-        <dependency>
-            <groupId>com.github.ScropyTR</groupId>
-            <artifactId>LegendInventoryAPI</artifactId>
-            <version>1.0.0</version>
-        </dependency>
     </dependencies>
 </project>
