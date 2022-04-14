@@ -11,29 +11,25 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 
 import java.util.HashMap;
+import java.util.List;
 
 @Getter
 public abstract class GUI implements InventoryHolder {
 
-    private String title;
-    private int size;
-    private HashMap<Integer, Item> items = new HashMap<>();
+    private final HashMap<Integer, Item> items = new HashMap<>();
 
-    private transient Inventory inventory;
+    private final transient Inventory inventory;
 
-    public GUI(String title, int size) {
-        this.title = title;
-        this.size = size;
-        this.inventory = Bukkit.createInventory(this, size, title);
+    public GUI() {
+        this.inventory = Bukkit.createInventory(this, getSize(), getTitle());
     }
 
     public GUI(Inventory inventory) {
         this.inventory = inventory;
-        this.title = inventory.getTitle();
-        this.size = inventory.getSize();
     }
 
     public void open(Player player) {
+        addContent();
         player.openInventory(this.inventory);
     }
 
@@ -43,6 +39,10 @@ public abstract class GUI implements InventoryHolder {
         }
         this.items.put(slot, item);
         this.inventory.setItem(slot, item.getItemStack());
+    }
+
+    public void setItem(Item item, List<Integer> slots) {
+        slots.forEach(slot -> setItem(item, slot));
     }
 
     public void addItem(Item item) {
@@ -55,21 +55,11 @@ public abstract class GUI implements InventoryHolder {
 
     public abstract void addContent();
 
+    public abstract String getTitle();
+    public abstract int getSize();
+
     public Item getItemBySlot(int slot) {
         return this.items.get(slot);
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
-    }
-
-    public void createInventory(int size, String title) {
-        this.inventory = Bukkit.createInventory(this, size, title);
-        items.forEach((slot, item) -> inventory.setItem(slot, item.getItemStack()));
     }
 
     public void update(Player player, String title) {/*

@@ -2,6 +2,7 @@ package com.github.scropytr.legendinventoryapi.gui;
 
 import com.cryptomorin.xseries.XMaterial;
 import com.github.scropytr.legendinventoryapi.item.Item;
+import com.github.scropytr.legendinventoryapi.item.ItemBuilder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -12,65 +13,57 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
-
-public abstract class PaginatedGUI extends GUI {
+public abstract class PaginatedGUI<T> extends GUI {
 
     @Getter
-    private int currentPage = 0;
-
-    @Setter
-    private List<Item> items;
-    @Setter
-    private List<Integer> slots;
-
-
-    public PaginatedGUI(String title, int size) {
-        super(title, size);
-    }
+    private int currentPage;
 
     @Override
-    public void open(Player player) {
-        refreshGUI();
-        super.open(player);
-    }
+    public void addContent() {
 
-    public void refreshGUI() {
-
-        int itemsSize = this.items.size();
-        int slotsSize = this.slots.size();
+        int itemsSize = getPaginatedObjects().size();
+        int slotsSize = getSlots().size();
 
         for (int i = 0; i < slotsSize; i++) {
             Item item;
             int index = currentPage * slotsSize + i;
-            if(index >= itemsSize) item = new Item(XMaterial.AIR);
-            else item = this.items.get(index);
-            setItem(item, slots.get(i));
+            if(index >= itemsSize) item = new ItemBuilder(XMaterial.AIR).build();
+            else item = getItem(getPaginatedObjects().get(index));
+            setItem(item, getSlots().get(i));
         }
     }
 
-    public void setPage(HumanEntity viewer, int newPage) {
+    public void setPage(int newPage) {
         if (newPage < 0) return;
-        if (newPage >= (double) this.items.size() / (double) this.slots.size()) return;
+        if (newPage >= (double) getPaginatedObjects().size() / (double) getSlots().size()) return;
         this.currentPage = newPage;
-        refreshGUI();
-        viewer.openInventory(getInventory());
+        addContent();
     }
 
-    public void nextPage(HumanEntity viewer) {
-        setPage(viewer, this.currentPage + 1);
+    public abstract List<Integer> getSlots();
+
+    public abstract List<T> getPaginatedObjects();
+
+    public abstract Item getItem(T t);
+
+    public void nextPage() {
+        setPage(this.currentPage + 1);
     }
 
-    public void previousPage(HumanEntity viewer) {
-        setPage(viewer, this.currentPage - 1);
+    public void previousPage() {
+        setPage(currentPage - 1);
     }
 
-    public void firstPage(HumanEntity viewer) {
-        setPage(viewer, 0);
+    public void firstPage() {
+        setPage(0);
     }
 
-    public void lastPage(HumanEntity viewer) {
-        setPage(viewer, this.items.size() / this.slots.size() - 1);
+    public void lastPage() {
+        setPage(getPaginatedObjects().size() / getPaginatedObjects().size() - 1);
     }
 }

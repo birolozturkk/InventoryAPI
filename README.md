@@ -27,94 +27,148 @@ Add to onEnable method of your plugin
 
 ## Usage
 
-``` java
-public class ExampleGUI extends GUI /*PaginatedGUI*/ {
+### Simple GUI
 
-    public ExampleGUI(InventoryAPI inventoryAPI, String title, int size) {
-        super(inventoryAPI, title, size);
+``` java
+public class ExampleGUI extends GUI {
+
+    @Override
+    public String getTitle() {
+        return "§2§lYes §8or §c§lNo";
     }
 
     @Override
-    public void onOpen(InventoryOpenEvent event) {
-        super.onOpen(event);
+    public int getSize() {
+        return 9;
+    }
+    
+    @Override
+    public void addContent() {
 
-        event.getPlayer().sendMessage("Inventory opened");
+        Item closeItem = new ItemBuilder(XMaterial.BARRIER).setDisplayName("§c§lClose")
+                .glowing().build()
+                .withListener(clickEvent -> clickEvent.getWhoClicked().closeInventory());
+
+        Item noItem = new ItemBuilder(XMaterial.RED_WOOL).setDisplayName("§c§lNo").build()
+                .withListener(clickEvent -> clickEvent.getWhoClicked().sendMessage("§c§lNo"));
+
+        Item yesItem = new ItemBuilder(XMaterial.LIME_WOOL).setDisplayName("§a§lYes").build()
+                .withListener(clickEvent -> clickEvent.getWhoClicked().sendMessage("§a§lYes"));
+
+        setItem(closeItem, 4);
+        setItem(yesItem, 2);
+        setItem(noItem, 6);
+
+    }
+
+
+    @Override
+    public void onOpen(InventoryOpenEvent event) {
 
     }
 
     @Override
     public void onClose(InventoryCloseEvent event) {
-        super.onClose(event);
 
-        event.getPlayer().sendMessage("Inventory closed");
     }
 
     @Override
     public void onClick(InventoryClickEvent event) {
-        super.onClick(event);
-
         event.setCancelled(true);
     }
 }
 ```
 
-
-### Simple GUI
-
-``` java
-
-    //ExampleGUI extends GUI
-    ExampleGUI exampleGUI = new ExampleGUI("Title", 27);
-    
-    Item item = new Item(XMaterial.CARROT).setDisplayName("display_name").setAmount(12)
-            .setLore(Arrays.asList("line 1", "line 2", "line 3")).build();
-
-    exampleGUI.setItem(item, 2);
-    exampleGUI.addItem(item);
-
-    exampleGUI.open(player);
-
-```
-
+![](../../Desktop/GUI.gif)
 
 ### Paginated GUI
 
 ``` java
 
-    //ExampleGUI extends PaginatedGUI
-    ExampleGUI exampleGUI = new ExampleGUI("title", 54);
+public class ExampleGUI extends PaginatedGUI<User> {
 
-    List<Item> items = new ArrayList<>();
-    for (int i = 0; i <= 105; i++) {
-        Item item = new Item(XMaterial.CACTUS).build();
-        item.setAction(clickEvent -> {
-            clickEvent.getWhoClicked().sendMessage("clicked");
-        });
-        items.add(item);
+    @Override
+    public String getTitle() {
+        return "§8§nChoose a player";
     }
 
-    exampleGUI.setSlots(Arrays.asList(0, 1, 2, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 17));
-    exampleGUI.setItems(items);
+    @Override
+    public int getSize() {
+        return 54;
+    }
+    
+    @Override
+    public void addContent() {
+        List<Integer> slots = Arrays.asList(0,
+                1, 2, 3, 4, 5, 6, 7, 8, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 51, 52, 53);
 
-    Item nextPageButton = new Item(XMaterial.PLAYER_HEAD).setDisplayName("next")
-            .setTexture("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWE5MmFkNDU2Zjc2ZWM3Y2FhMzU5NTkyMmQ1ZmNjMzhkY2E5MjhkYzY3MTVmNzUyZTc0YzhkZGRlMzQ0ZSJ9fX0=")
-            .setAction(clickEvent -> {
-                exampleGUI.nextPage(player);
-                clickEvent.getWhoClicked().sendMessage("Sayfa: " + exampleGUI.getCurrentPage());
-            }).build();
+        setItem(new ItemBuilder(XMaterial.BLACK_STAINED_GLASS_PANE).setDisplayName("").build(), slots);
 
-    Item previousPageButton = new Item(XMaterial.PLAYER_HEAD).setDisplayName("previous")
-            .setTexture("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGZhNjA1ZTI1ZjRmYzJjZWE1YTc2NmQ3OWE4YmZhMjkwMzEzZTQ1ZDhmNWU5NTdkOTU4YTBmMzNmY2IxNiJ9fX0=")
-            .setAction(clickEvent -> {
-                exampleGUI.previousPage(player);
-                clickEvent.getWhoClicked().sendMessage("Sayfa: " + exampleGUI.getCurrentPage());
-            }).build();
+        Item closeItem = new ItemBuilder(XMaterial.BARRIER).setDisplayName("§c§lClose")
+                .glowing().build()
+                .withListener(clickEvent -> clickEvent.getWhoClicked().closeInventory());
+
+        Item nextPage = new ItemBuilder(XMaterial.ARROW).setDisplayName("§a§lNext").build()
+                .withListener(clickEvent -> nextPage());
+
+        Item previousPage = new ItemBuilder(XMaterial.ARROW).setDisplayName("§e§lPrevious").build()
+                .withListener(clickEvent -> previousPage());
+
+        setItem(closeItem, 49);
+        setItem(previousPage, 48);
+        setItem(nextPage, 50);
+
+        super.addContent();
+    }
 
 
-    exampleGUI.setItem(nextPageButton, 23);
-    exampleGUI.setItem(previousPageButton, 22);
+    @Override
+    public List<User> getPaginatedObjects() {
+        List<User> users = new ArrayList<>();
+        for (int i = 0; i<60; ++i) {
+            users.add(new User("Scropy"));
+        }
+        return users;
+    }
 
-    exampleGUI.open(player);
+    @Override
+    public Item getItem(User user) {
+        return new ItemBuilder(XMaterial.PLAYER_HEAD).setDisplayName("§b" + user.getName())
+                .setLore(Arrays.asList("", " §e► Click to select player"))
+                .setHeadData("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWVjY2RhNzBiZWFkOWY2N2IzOWRjZThiMDQwYWQwZjA4ZWZjMjMwNWMxZjY4NDYxMTY0N2EwMThhNjY0NTJjMiJ9fX0=")
+                .build();
+    }
+
+    @Override
+    public List<Integer> getSlots() {
+        return Arrays.asList(
+                10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43
+        );
+    }
+
+    @Override
+    public void onOpen(InventoryOpenEvent event) {
+
+    }
+
+    @Override
+    public void onClose(InventoryCloseEvent event) {
+
+    }
+
+    @Override
+    public void onClick(InventoryClickEvent event) {
+        event.setCancelled(true);
+    }
+
+}
 
 ```
 
+``` java
+    ExampleGUI exampleGUI = new ExampleGUI();
+
+    exampleGUI.open(player);
+```
+
+![](../../Desktop/PaginatedGUI.gif)
