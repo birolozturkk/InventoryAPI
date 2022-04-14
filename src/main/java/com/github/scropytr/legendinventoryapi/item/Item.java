@@ -24,7 +24,7 @@ public class Item {
     private List<String> lore = new ArrayList<>();
 
     private transient ItemStack itemStack;
-    private transient Click click = clickEvent -> {};
+    private transient Click click;
 
     public Item(XMaterial material) {
         this.material = material;

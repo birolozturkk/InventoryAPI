@@ -5,6 +5,9 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class ExampleGUI extends PaginatedGUI {
 
     public ExampleGUI(String title, int size) {
