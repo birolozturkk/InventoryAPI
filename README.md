@@ -19,7 +19,7 @@
 
 ## Setup
 
-```java
+``` java
 InventoryAPI.setup(this);
 ```
 Add to onEnable method of your plugin
