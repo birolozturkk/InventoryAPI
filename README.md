@@ -1,13 +1,13 @@
-## Maven
-
 [![](https://jitpack.io/v/ScropyTR/LegendInventoryAPI.svg)](https://jitpack.io/#ScropyTR/LegendInventoryAPI)
+
+## Maven
 
 ```pom.xml
 
 <dependency>
     <groupId>com.github.ScropyTR</groupId>
     <artifactId>LegendInventoryAPI</artifactId>
-    <version>1.0.0</version>
+    <version>0.0.2</version>
 </dependency>
 
 <repository>
@@ -79,7 +79,7 @@ public class ExampleGUI extends GUI {
 }
 ```
 
-![gui](C:\Users\Birol\Desktop\GUI.gif)
+![GUI](https://user-images.githubusercontent.com/70208466/165330915-905ec7ac-daaa-41fd-bdd1-6be51883e475.gif)
 
 
 ### Paginated GUI
@@ -165,7 +165,7 @@ public class ExampleGUI extends PaginatedGUI<User> {
 }
 
 ```
-![paginated gui](https://user-images.githubusercontent.com/70208466/165129056-e0fc30fe-cbc6-4947-943b-755ca4249e7d.gif)
+![PaginatedGUI](https://user-images.githubusercontent.com/70208466/165331206-f97ab530-d39b-4e3c-afc7-2cffc444c17b.gif)
 
 ``` java
     ExampleGUI exampleGUI = new ExampleGUI();

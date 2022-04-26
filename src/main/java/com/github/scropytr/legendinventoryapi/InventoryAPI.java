@@ -5,7 +5,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 
-
 public class InventoryAPI {
 
     public static void setup(Plugin plugin) {
