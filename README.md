@@ -1,7 +1,5 @@
 ## Maven
 
-![](https://jitpack.io/v/ScropyTR/LegendInventoryAPI.svg)](https://jitpack.io/#ScropyTR/LegendInventoryAPI)
-
 ```pom.xml
 
 <dependency>
