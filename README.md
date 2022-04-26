@@ -79,7 +79,7 @@ public class ExampleGUI extends GUI {
 }
 ```
 
-![gui](C:\Users\Birol\Desktop\GUI.gif)
+![GUI](https://user-images.githubusercontent.com/70208466/165330915-905ec7ac-daaa-41fd-bdd1-6be51883e475.gif)
 
 
 ### Paginated GUI
@@ -165,7 +165,8 @@ public class ExampleGUI extends PaginatedGUI<User> {
 }
 
 ```
-![paginated gui](https://user-images.githubusercontent.com/70208466/165129056-e0fc30fe-cbc6-4947-943b-755ca4249e7d.gif)
+
+![Uploading PaginatedGUI.gif…]()
 
 ``` java
     ExampleGUI exampleGUI = new ExampleGUI();
