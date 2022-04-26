@@ -79,7 +79,8 @@ public class ExampleGUI extends GUI {
 }
 ```
 
-![](../../Desktop/GUI.gif)
+![paginated gui](C:\Users\Birol\Desktop\GUI.gif)
+
 
 ### Paginated GUI
 
@@ -171,5 +172,3 @@ public class ExampleGUI extends PaginatedGUI<User> {
 
     exampleGUI.open(player);
 ```
-
-![](../../Desktop/PaginatedGUI.gif)
