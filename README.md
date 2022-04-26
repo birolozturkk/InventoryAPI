@@ -165,8 +165,7 @@ public class ExampleGUI extends PaginatedGUI<User> {
 }
 
 ```
-
-![Uploading PaginatedGUI.gif…]()
+![PaginatedGUI](https://user-images.githubusercontent.com/70208466/165331206-f97ab530-d39b-4e3c-afc7-2cffc444c17b.gif)
 
 ``` java
     ExampleGUI exampleGUI = new ExampleGUI();
