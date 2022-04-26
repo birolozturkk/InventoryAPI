@@ -79,7 +79,7 @@ public class ExampleGUI extends GUI {
 }
 ```
 
-![paginated gui](C:\Users\Birol\Desktop\GUI.gif)
+![gui](C:\Users\Birol\Desktop\GUI.gif)
 
 
 ### Paginated GUI
