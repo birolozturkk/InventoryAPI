@@ -89,7 +89,7 @@ public class ItemBuilder {
     }
 
     public ItemBuilder setHeadData(String headData) {
-        if (!(itemStack.getType() == XMaterial.PLAYER_HEAD.parseMaterial())) return this;
+        if (itemStack.getType() != XMaterial.PLAYER_HEAD.parseMaterial()) return this;
         if (headData == null) return this;
 
         NBTItem nbtItem = new NBTItem(itemStack);
