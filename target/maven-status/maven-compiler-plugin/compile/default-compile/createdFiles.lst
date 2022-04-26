@@ -1,0 +1,11 @@
+com\github\scropytr\legendinventoryapi\example\ExampleGUI.class
+com\github\scropytr\legendinventoryapi\item\ItemBuilder.class
+com\github\scropytr\legendinventoryapi\example\Main.class
+com\github\scropytr\legendinventoryapi\example\User.class
+com\github\scropytr\legendinventoryapi\gui\GUI.class
+com\github\scropytr\legendinventoryapi\example\TestCommand.class
+com\github\scropytr\legendinventoryapi\example\SkinUtils.class
+com\github\scropytr\legendinventoryapi\gui\PaginatedGUI.class
+com\github\scropytr\legendinventoryapi\item\Item.class
+com\github\scropytr\legendinventoryapi\InventoryAPI.class
+com\github\scropytr\legendinventoryapi\listeners\GUIListener.class
