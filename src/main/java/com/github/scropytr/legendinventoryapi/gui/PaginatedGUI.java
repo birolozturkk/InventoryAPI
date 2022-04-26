@@ -3,20 +3,8 @@ package com.github.scropytr.legendinventoryapi.gui;
 import com.cryptomorin.xseries.XMaterial;
 import com.github.scropytr.legendinventoryapi.item.Item;
 import com.github.scropytr.legendinventoryapi.item.ItemBuilder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.Setter;
-import org.bukkit.entity.HumanEntity;
-import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryCloseEvent;
-import org.bukkit.event.inventory.InventoryOpenEvent;
-
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public abstract class PaginatedGUI<T> extends GUI {
 
