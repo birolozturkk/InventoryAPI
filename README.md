@@ -81,7 +81,7 @@ public class ExampleGUI extends GUI {
 
 public class ExampleGUI extends PaginatedGUI<User> {
 
-        public ExampleGUI() {
+    public ExampleGUI() {
         super("§8§nChoose a player", 54);
     }
 
