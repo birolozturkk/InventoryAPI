@@ -153,5 +153,5 @@ public class ExampleGUI extends PaginatedGUI<User> {
 ``` java
     ExampleGUI exampleGUI = new ExampleGUI();
 
-    exampleGUI.open(player);
+    player.openInventory(exampleGUI.getInventory());
 ```
