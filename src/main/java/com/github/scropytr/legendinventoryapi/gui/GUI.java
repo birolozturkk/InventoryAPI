@@ -18,13 +18,19 @@ public abstract class GUI implements InventoryHolder {
 
     private final HashMap<Integer, Item> items = new HashMap<>();
 
-    private Inventory inventory;
+    private final Inventory inventory;
 
-    public void open(Player player) {
-        inventory = Bukkit.createInventory(this, getSize(), getTitle());
-        addContent();
-        player.openInventory(this.inventory);
+    public GUI(String title, int size) {
+        this.inventory = Bukkit.createInventory(this, size, title);
     }
+
+    @Override
+    public Inventory getInventory() {
+        addContent();
+        return inventory;
+    }
+
+    public abstract void addContent();
 
     public void setItem(Item item, int slot) {
         if (this.inventory.getSize() <= slot) {
@@ -45,11 +51,6 @@ public abstract class GUI implements InventoryHolder {
     public abstract void onOpen(InventoryOpenEvent event);
     public abstract void onClose(InventoryCloseEvent event);
     public abstract void onClick(InventoryClickEvent event);
-
-    public abstract void addContent();
-
-    public abstract String getTitle();
-    public abstract int getSize();
 
     public Item getItemBySlot(int slot) {
         return this.items.get(slot);

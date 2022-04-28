@@ -1,5 +1,5 @@
 name: LegendInventoryAPI
-version: '1.0.0'
+version: '0.0.2'
 main: com.github.scropytr.legendinventoryapi.example.Main
 api-version: 1.18
 authors: [ Scropy ]

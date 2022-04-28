@@ -4,12 +4,18 @@ import com.cryptomorin.xseries.XMaterial;
 import com.github.scropytr.legendinventoryapi.item.Item;
 import com.github.scropytr.legendinventoryapi.item.ItemBuilder;
 import lombok.Getter;
+import org.bukkit.inventory.Inventory;
+
 import java.util.List;
 
 public abstract class PaginatedGUI<T> extends GUI {
 
     @Getter
     private int currentPage;
+
+    public PaginatedGUI(String title, int size) {
+        super(title, size);
+    }
 
     @Override
     public void addContent() {

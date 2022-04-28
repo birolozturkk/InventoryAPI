@@ -7,7 +7,7 @@
 <dependency>
     <groupId>com.github.ScropyTR</groupId>
     <artifactId>LegendInventoryAPI</artifactId>
-    <version>0.0.5</version>
+    <version>0.0.4</version>
 </dependency>
 
 <repository>
@@ -32,14 +32,8 @@ Add to onEnable method of your plugin
 ``` java
 public class ExampleGUI extends GUI {
 
-    @Override
-    public String getTitle() {
-        return "§2§lYes §8or §c§lNo";
-    }
-
-    @Override
-    public int getSize() {
-        return 9;
+    public ExampleGUI() {
+        super("§2§lYes §8or §c§lNo", 9);
     }
     
     @Override
@@ -60,7 +54,6 @@ public class ExampleGUI extends GUI {
         setItem(noItem, 6);
 
     }
-
 
     @Override
     public void onOpen(InventoryOpenEvent event) {
@@ -88,22 +81,16 @@ public class ExampleGUI extends GUI {
 
 public class ExampleGUI extends PaginatedGUI<User> {
 
-    @Override
-    public String getTitle() {
-        return "§8§nChoose a player";
+        public ExampleGUI() {
+        super("§8§nChoose a player", 54);
     }
 
-    @Override
-    public int getSize() {
-        return 54;
-    }
-    
     @Override
     public void addContent() {
         List<Integer> slots = Arrays.asList(0,
                 1, 2, 3, 4, 5, 6, 7, 8, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 51, 52, 53);
 
-        setItem(new ItemBuilder(XMaterial.BLACK_STAINED_GLASS_PANE).setDisplayName("").build(), slots);
+        setItem(new ItemBuilder(XMaterial.BLACK_STAINED_GLASS_PANE).setDisplayName(" ").build(), slots);
 
         Item closeItem = new ItemBuilder(XMaterial.BARRIER).setDisplayName("§c§lClose")
                 .glowing().build()
@@ -124,19 +111,15 @@ public class ExampleGUI extends PaginatedGUI<User> {
 
 
     @Override
-    public List<User> getPaginatedObjects() {
-        List<User> users = new ArrayList<>();
-        for (int i = 0; i<60; ++i) {
-            users.add(new User("Scropy"));
-        }
-        return users;
+    public List<Player> getPaginatedObjects() {
+        return new ArrayList<>(Bukkit.getServer().getOnlinePlayers());
     }
 
     @Override
-    public Item getItem(User user) {
-        return new ItemBuilder(XMaterial.PLAYER_HEAD).setDisplayName("§b" + user.getName())
+    public Item getItem(Player player) {
+        return new ItemBuilder(XMaterial.PLAYER_HEAD).setDisplayName("§b" + player.getName())
                 .setLore(Arrays.asList("", " §e► Click to select player"))
-                .setHeadData("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWVjY2RhNzBiZWFkOWY2N2IzOWRjZThiMDQwYWQwZjA4ZWZjMjMwNWMxZjY4NDYxMTY0N2EwMThhNjY0NTJjMiJ9fX0=")
+                .setHeadData(SkinUtils.getHeadData(player.getUniqueId()))
                 .build();
     }
 
