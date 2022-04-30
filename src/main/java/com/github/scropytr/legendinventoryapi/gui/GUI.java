@@ -20,9 +20,12 @@ public abstract class GUI implements InventoryHolder {
 
     private final Inventory inventory;
 
-    public GUI(String title, int size) {
-        this.inventory = Bukkit.createInventory(this, size, title);
+    public GUI() {
+        this.inventory = Bukkit.createInventory(this, getSize(), getTitle());
     }
+
+    public abstract String getTitle();
+    public abstract int getSize();
 
     @Override
     public Inventory getInventory() {
