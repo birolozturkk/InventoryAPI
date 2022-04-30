@@ -7,7 +7,7 @@
 <dependency>
     <groupId>com.github.ScropyTR</groupId>
     <artifactId>LegendInventoryAPI</artifactId>
-    <version>0.0.4</version>
+    <version>0.0.6</version>
 </dependency>
 
 <repository>
@@ -31,9 +31,15 @@ Add to onEnable method of your plugin
 
 ``` java
 public class ExampleGUI extends GUI {
-
-    public ExampleGUI() {
-        super("§2§lYes §8or §c§lNo", 9);
+        
+    @Override
+    public String getTitle() {
+        return "§2§lYes §8or §c§lNo";
+    }
+    
+    @Override
+    public int getSize() {
+        return 9;
     }
     
     @Override
@@ -80,11 +86,17 @@ public class ExampleGUI extends GUI {
 ``` java
 
 public class ExampleGUI extends PaginatedGUI<User> {
-
-        public ExampleGUI() {
-        super("§8§nChoose a player", 54);
+    
+    @Override
+    public String getTitle() {
+        return "§8§nChoose a player";
     }
-
+    
+    @Override
+    public int getSize() {
+        return 54;
+    }
+    
     @Override
     public void addContent() {
         List<Integer> slots = Arrays.asList(0,
