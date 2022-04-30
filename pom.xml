@@ -6,7 +6,7 @@
 
     <groupId>com.github.scropytr</groupId>
     <artifactId>LegendInventoryAPI</artifactId>
-    <version>0.0.2</version>
+    <version>7.0.0</version>
     <packaging>jar</packaging>
 
     <name>LegendInventoryAPI</name>

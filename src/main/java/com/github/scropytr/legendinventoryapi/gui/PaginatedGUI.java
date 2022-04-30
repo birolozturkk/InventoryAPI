@@ -13,10 +13,6 @@ public abstract class PaginatedGUI<T> extends GUI {
     @Getter
     private int currentPage;
 
-    public PaginatedGUI(String title, int size) {
-        super(title, size);
-    }
-
     @Override
     public void addContent() {
 
