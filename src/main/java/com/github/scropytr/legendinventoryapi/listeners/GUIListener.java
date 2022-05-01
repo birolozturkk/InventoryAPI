@@ -15,7 +15,6 @@ public class GUIListener implements Listener {
     public void onClick(InventoryClickEvent event) {
         if (event.getClickedInventory().getHolder() != null && event.getClickedInventory().getHolder() instanceof GUI) {
             if (event.getWhoClicked() instanceof Player) {
-                Player player = (Player) event.getWhoClicked();
                 GUI gui = (GUI) event.getClickedInventory().getHolder();
                 gui.onClick(event);
 
@@ -30,7 +29,6 @@ public class GUIListener implements Listener {
     public void onClose(InventoryCloseEvent event){
         if (event.getInventory().getHolder() != null && event.getInventory().getHolder() instanceof GUI) {
             if (event.getPlayer() instanceof Player) {
-                Player player = (Player) event.getPlayer();
                 GUI gui = (GUI) event.getInventory().getHolder();
                 gui.onClose(event);
 
@@ -42,7 +40,6 @@ public class GUIListener implements Listener {
     public void onOpen(InventoryOpenEvent event){
         if (event.getInventory().getHolder() != null && event.getInventory().getHolder() instanceof GUI) {
             if (event.getPlayer() instanceof Player) {
-                Player player = (Player) event.getPlayer();
                 GUI gui = (GUI) event.getInventory().getHolder();
                 gui.onOpen(event);
 
