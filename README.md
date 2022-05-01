@@ -90,11 +90,38 @@ public class ExampleGUI extends PaginatedGUI<User> {
     @Override
     public String getTitle() {
         return "§8§nChoose a player";
+    }
     
     @Override
     public int getSize() {
         return 54;
     }
+    
+    @Override
+    public Item getBackgroundItem() {
+        return new ItemBuilder(XMaterial.BARRIER).build();
+    }
+
+    @Override
+    public List<Player> getPaginatedObjects() {
+        return new ArrayList<>(Bukkit.getServer().getOnlinePlayers());
+    }
+
+    @Override
+    public Item getItem(Player player) {
+        return new ItemBuilder(XMaterial.PLAYER_HEAD).setDisplayName("§b" + player.getName())
+                .setLore(Arrays.asList("", " §e► Click to select player"))
+                .setHeadData(SkinUtils.getHeadData(player.getUniqueId()))
+                .build();
+    }
+
+    @Override
+    public List<Integer> getSlots() {
+        return Arrays.asList(
+                10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43
+        );
+    }
+ 
     
     @Override
     public void addContent() {
@@ -120,26 +147,6 @@ public class ExampleGUI extends PaginatedGUI<User> {
         super.addContent();
     }
 
-
-    @Override
-    public List<Player> getPaginatedObjects() {
-        return new ArrayList<>(Bukkit.getServer().getOnlinePlayers());
-    }
-
-    @Override
-    public Item getItem(Player player) {
-        return new ItemBuilder(XMaterial.PLAYER_HEAD).setDisplayName("§b" + player.getName())
-                .setLore(Arrays.asList("", " §e► Click to select player"))
-                .setHeadData(SkinUtils.getHeadData(player.getUniqueId()))
-                .build();
-    }
-
-    @Override
-    public List<Integer> getSlots() {
-        return Arrays.asList(
-                10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43
-        );
-    }
 
     @Override
     public void onOpen(InventoryOpenEvent event) {

@@ -13,6 +13,14 @@ public abstract class PaginatedGUI<T> extends GUI {
     @Getter
     private int currentPage;
 
+    public Item getBackgroundItem() {
+        return new Item(XMaterial.AIR);
+    }
+
+    public abstract List<Integer> getSlots();
+    public abstract List<T> getPaginatedObjects();
+    public abstract Item getItem(T t);
+
     @Override
     public void addContent() {
 
@@ -22,7 +30,7 @@ public abstract class PaginatedGUI<T> extends GUI {
         for (int i = 0; i < slotsSize; i++) {
             Item item;
             int index = currentPage * slotsSize + i;
-            if(index >= itemsSize) item = new ItemBuilder(XMaterial.AIR).build();
+            if(index >= itemsSize) item = getBackgroundItem();
             else item = getItem(getPaginatedObjects().get(index));
             setItem(item, getSlots().get(i));
         }
@@ -35,11 +43,7 @@ public abstract class PaginatedGUI<T> extends GUI {
         addContent();
     }
 
-    public abstract List<Integer> getSlots();
 
-    public abstract List<T> getPaginatedObjects();
-
-    public abstract Item getItem(T t);
 
     public void nextPage() {
         setPage(this.currentPage + 1);

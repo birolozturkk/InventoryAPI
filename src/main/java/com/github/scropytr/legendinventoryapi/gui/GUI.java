@@ -18,17 +18,14 @@ public abstract class GUI implements InventoryHolder {
 
     private final HashMap<Integer, Item> items = new HashMap<>();
 
-    private final Inventory inventory;
-
-    public GUI() {
-        this.inventory = Bukkit.createInventory(this, getSize(), getTitle());
-    }
+    private Inventory inventory;
 
     public abstract String getTitle();
     public abstract int getSize();
 
     @Override
     public Inventory getInventory() {
+        inventory = Bukkit.createInventory(this, getSize(), getTitle());
         addContent();
         return inventory;
     }
