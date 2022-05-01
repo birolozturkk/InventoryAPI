@@ -13,10 +13,10 @@ public class GUIListener implements Listener {
 
     @EventHandler
     public void onClick(InventoryClickEvent event) {
-        if (event.getInventory().getHolder() != null && event.getInventory().getHolder() instanceof GUI) {
+        if (event.getClickedInventory().getHolder() != null && event.getClickedInventory().getHolder() instanceof GUI) {
             if (event.getWhoClicked() instanceof Player) {
                 Player player = (Player) event.getWhoClicked();
-                GUI gui = (GUI) event.getInventory().getHolder();
+                GUI gui = (GUI) event.getClickedInventory().getHolder();
                 gui.onClick(event);
 
                 Item item = gui.getItemBySlot(event.getSlot());
