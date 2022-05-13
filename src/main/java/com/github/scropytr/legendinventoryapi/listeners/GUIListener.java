@@ -8,14 +8,23 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
+import org.bukkit.plugin.java.JavaPlugin;
 
 public class GUIListener implements Listener {
+
+    private final JavaPlugin owner;
+
+    public GUIListener(JavaPlugin owner) {
+        this.owner = owner;
+    }
 
     @EventHandler
     public void onClick(InventoryClickEvent event) {
         if (event.getInventory().getHolder() != null && event.getInventory().getHolder() instanceof GUI) {
             if (event.getWhoClicked() instanceof Player) {
-                GUI gui = (GUI) event.getClickedInventory().getHolder();
+                GUI gui = (GUI) event.getInventory().getHolder();
+
+                if(!gui.getOwner().equals(owner)) return;
                 gui.onClick(event);
 
                 Item item = gui.getItemBySlot(event.getSlot());

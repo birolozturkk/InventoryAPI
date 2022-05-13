@@ -9,6 +9,7 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
 import java.util.List;
@@ -17,7 +18,6 @@ import java.util.List;
 public abstract class GUI implements InventoryHolder {
 
     private final HashMap<Integer, Item> items = new HashMap<>();
-
     private Inventory inventory;
 
     public abstract String getTitle();
@@ -56,13 +56,6 @@ public abstract class GUI implements InventoryHolder {
         return this.items.get(slot);
     }
 
-    public void update(Player player, String title) {/*
-        EntityPlayer entityPlayer = ((CraftPlayer) player).getHandle();
-        PacketPlayOutOpenWindow packet = new PacketPlayOutOpenWindow(entityPlayer.activeContainer.windowId, "minecraft:chest",
-                new ChatMessage(title), player.getOpenInventory().getTopInventory().getSize());
-        entityPlayer.playerConnection.sendPacket(packet);
-        entityPlayer.updateInventory(entityPlayer.activeContainer);*/
-    }
-
+    public abstract JavaPlugin getOwner();
 
 }
