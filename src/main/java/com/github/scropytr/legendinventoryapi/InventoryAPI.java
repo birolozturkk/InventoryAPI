@@ -11,7 +11,7 @@ public class InventoryAPI {
     public static void setup(Plugin plugin) {
 
         PluginManager pm = Bukkit.getPluginManager();
-        pm.registerEvents(new GUIListener(plugin), plugin);
+        pm.registerEvents(new GUIListener(), plugin);
 
     }
 
