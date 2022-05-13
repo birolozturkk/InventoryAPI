@@ -9,6 +9,7 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
@@ -56,6 +57,6 @@ public abstract class GUI implements InventoryHolder {
         return this.items.get(slot);
     }
 
-    public abstract JavaPlugin getOwner();
+    public abstract Plugin getOwner();
 
 }
