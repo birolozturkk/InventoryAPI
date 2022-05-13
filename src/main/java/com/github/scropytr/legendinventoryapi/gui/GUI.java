@@ -57,6 +57,4 @@ public abstract class GUI implements InventoryHolder {
         return this.items.get(slot);
     }
 
-    public abstract Plugin getOwner();
-
 }

@@ -13,19 +13,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class GUIListener implements Listener {
 
-    private final Plugin owner;
-
-    public GUIListener(Plugin owner) {
-        this.owner = owner;
-    }
-
     @EventHandler
     public void onClick(InventoryClickEvent event) {
         if (event.getInventory().getHolder() != null && event.getInventory().getHolder() instanceof GUI) {
             if (event.getWhoClicked() instanceof Player) {
                 if(event.getClickedInventory() == null) return;
                 GUI gui = (GUI) event.getInventory().getHolder();
-                if(!gui.getOwner().equals(owner)) return;
+
                 gui.onClick(event);
 
                if(event.getClickedInventory().getHolder() == null ||
