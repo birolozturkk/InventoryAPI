@@ -85,7 +85,7 @@ public class ExampleGUI extends GUI {
 
 ``` java
 
-public class ExampleGUI extends PaginatedGUI<User> {
+public class ExampleGUI extends PaginatedGUI<Player> {
     
     @Override
     public String getTitle() {
