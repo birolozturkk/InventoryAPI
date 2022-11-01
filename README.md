@@ -5,9 +5,9 @@
 ```pom.xml
 
 <dependency>
-    <groupId>com.github.ScropyTR</groupId>
-    <artifactId>LegendInventoryAPI</artifactId>
-    <version>0.2</version>
+    <groupId>com.github.birolozturkk</groupId>
+    <artifactId>inventoryapi</artifactId>
+    <version>v1.1</version>
 </dependency>
 
 <repository>
